@@ -9,7 +9,8 @@ const express = require("express")
 const expressLayouts = require("express-ejs-layouts")
 const env = require("dotenv").config()
 const app = express()
-const static = require("./routes/static")
+const static = require("./routes/static") /*Route to the Static.js*/
+
 
 /* ***********************
  * View engine and template
@@ -17,13 +18,17 @@ const static = require("./routes/static")
 
 app.set("view engine", "ejs")
 app.use(expressLayouts)
-app.set("layout", "./layouts/layouts") // not at views root
+app.set("layout", "./layouts/layout") // not at views root // A route to layouts.ejs
+// Index route
+app.get("/", function (req, res) {
+  res.render("index", { title: "Home" })
+})
 
 
 /* ***********************
  * Routes
  *************************/
-app.use(static)
+app.use(static) /*Route use of static.js*/
 
 /* ***********************
  * Local Server Information
