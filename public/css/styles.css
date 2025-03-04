@@ -5,10 +5,36 @@
   box-sizing: border-box;
 }
 
-.top-header {
+/* header */
+
+#top-header {
   background-color: bisque;
   text-align: center;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+a {
+  margin: 20px;
+}
+
+/* navigation bar */
+
+nav {
+  background-color: bisque; 
   margin: auto;
+}
+
+ul {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+li {
+  margin: 20px;
 }
