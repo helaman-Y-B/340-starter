@@ -4,3 +4,11 @@
 *:after {
   box-sizing: border-box;
 }
+
+.top-header {
+  background-color: bisque;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
