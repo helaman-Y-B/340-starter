@@ -5,6 +5,27 @@
   box-sizing: border-box;
 }
 
+body {
+  background-image: url("../images/site/checkerboard.jpg");
+}
+
+#wrapper {
+  background-color: bisque;
+  padding: 10px;
+}
+
+/* Index page */
+
+#reviews {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.review {
+  margin-left: 0px;
+}
+
 /* header */
 
 #top-header {
@@ -23,7 +44,7 @@ a {
 /* navigation bar */
 
 nav {
-  background-color: bisque; 
+  background-color: rgb(140, 213, 255); 
   margin: auto;
 }
 
