@@ -16,6 +16,17 @@ body {
 
 /* Index page */
 
+#presentaion {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+#main-car {
+  width: 80vw;
+  margin: auto;
+}
+
 #reviews {
   display: flex;
   flex-direction: column;
