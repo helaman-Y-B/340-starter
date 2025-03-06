@@ -119,7 +119,6 @@ footer {
 
 nav {
   background-color: rgb(140, 213, 255); 
-  margin: auto;
 }
 
 #nav-bar {
@@ -128,6 +127,7 @@ nav {
   justify-content: center;
   text-align: center;
   padding: 10px;
+  margin: 0px;
 }
 
 li {
