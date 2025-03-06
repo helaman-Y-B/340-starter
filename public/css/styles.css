@@ -12,13 +12,17 @@ body {
 #wrapper {
   background-color: bisque;
   padding: 10px;
+  border: 10px solid;
+  border-radius: 10px;
+  border-color: rgb(255, 192, 116);
 }
 
 /* Index page */
 
-#presentaion {
+#presentation {
   padding: 10px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -27,15 +31,46 @@ body {
   margin: auto;
 }
 
-#reviews {
+#upgrades {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.upgrade-item {
   display: flex;
   flex-direction: column;
-  justify-content: left;
+  justify-content: center;
+  background-color: antiquewhite;
+  border: 10px solid;
+  border-color: rgb(255, 192, 116);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 20px;
+  width: 150px;
+  height: 200px;
+}
+
+.upgrade-item img {
+  max-width: 100px;
+  margin: auto;
+}
+
+.upgrade-item a {
+  margin: 20px auto;
+}
+
+
+#reviews {
+  display: block;
+  padding-left: 0px;
 }
 
 .review {
   margin-left: 0px;
+  list-style-position: inside;
 }
+
 
 /* header */
 
@@ -45,11 +80,21 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 20px 20px;
 }
 
-a {
-  margin: 20px;
+.siteName a {
+  font-size: 25px;
+  text-align: left;
+  text-decoration-line: none;
+  color: rgb(56, 56, 56);
+}
+
+#tools a {
+  text-decoration-line: none;
+  color: rgb(56, 56, 56);
+  text-align: right;
 }
 
 /* navigation bar */
@@ -68,5 +113,6 @@ ul {
 }
 
 li {
+  list-style-type: none;
   margin: 20px;
 }
