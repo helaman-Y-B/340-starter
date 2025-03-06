@@ -15,6 +15,14 @@ p {
   font-family: "Nunito", sans-serif;
 }
 
+h1, h2, h3, h4 {
+  font-family: "Inter", sans-serif;
+}
+
+footer {
+  font-family: "Nunito", sans-serif;
+}
+
 #wrapper {
   background-color: bisque;
   padding: 10px;
@@ -44,6 +52,7 @@ p {
 }
 
 .upgrade-item {
+  font-family: "Nunito", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -73,6 +82,7 @@ p {
 }
 
 .review {
+  font-family: "Nunito", sans-serif;
   margin-left: 0px;
   list-style-position: inside;
 }
@@ -100,6 +110,7 @@ p {
 
 #tools a {
   text-decoration-line: none;
+  font-family: "Inter", sans-serif;
   color: rgb(56, 56, 56);
   text-align: right;
 }
@@ -112,6 +123,7 @@ nav {
 }
 
 ul {
+  font-family: "Inter", sans-serif;
   margin: auto;
   display: flex;
   flex-direction: row;
