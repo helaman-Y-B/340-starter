@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
 /******* Change Box Model ***************/
 *,
 *:before,
@@ -7,6 +9,10 @@
 
 body {
   background-image: url("../images/site/checkerboard.jpg");
+}
+
+p {
+  font-family: "Nunito", sans-serif;
 }
 
 #wrapper {
@@ -86,6 +92,7 @@ body {
 
 .siteName a {
   font-size: 25px;
+  font-family: "Inter", sans-serif;
   text-align: left;
   text-decoration-line: none;
   color: rgb(56, 56, 56);
