@@ -124,11 +124,10 @@ nav {
 
 ul {
   font-family: "Inter", sans-serif;
-  margin: auto;
-  display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  padding: 10px;
 }
 
 li {
