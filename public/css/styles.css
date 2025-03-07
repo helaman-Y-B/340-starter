@@ -100,6 +100,10 @@ footer {
   margin: 20px auto;
 }
 
+#upgrades h3 {
+  width: 100%;
+}
+
 
 #reviews {
   display: block;
@@ -197,7 +201,6 @@ nav:hover {
   }
   
   li {
-    list-style-type: none;
     width: 25%;
     margin: 20px;
   }
@@ -219,6 +222,17 @@ nav:hover {
   #presentation {
     position: relative;
     justify-content: center;
+  }
+
+  .upgrade-item {
+    margin: 10px;
+    width: 150px;
+    height: 170px;
+  }
+
+  #up-reviews {
+    max-width: 500px;
+    margin: auto;
   }
 
   /* Propaganda div */
@@ -267,8 +281,9 @@ nav:hover {
 
   #up-reviews {
     display: flex;
-    flex-direction: row;
+    flex-direction:row-reverse;
     justify-content: center;
+    max-width: max-content;
   }
 
   #upgrades, #car-reviews {
