@@ -45,6 +45,31 @@ footer {
   margin: auto;
 }
 
+#propaganda {
+  background-color: rgb(233, 216, 194);
+  padding: 10px;
+  width: 80vw;
+  margin: auto;
+}
+
+#propaganda h3 {
+  margin: 0px;
+  opacity: 0.8;
+}
+
+#propaganda p {
+  opacity: 0.8;
+}
+
+#propaganda button {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  opacity: 0.8;
+  width: 150px;
+  height: 50px;
+  background-color: rgb(140, 213, 255);
+}
+
 #upgrades {
   display: flex;
   flex-wrap: wrap;
@@ -134,16 +159,23 @@ nav {
   margin: 0px;
 }
 
-li {
-  list-style-type: none;
-  margin: 20px;
-}
-
 #dropdown {
   display: none;
   position: absolute;
   width: 100%;
   z-index: 1;
+}
+
+#current {
+  font-size: 20px;
+  list-style-type: none;
+  margin: 20px;
+}
+
+#dropdown li {
+  font-size: 20px;
+  list-style-type: none;
+  margin: 20px;
 }
 
 nav:hover {
@@ -156,6 +188,8 @@ nav:hover {
 /* medias */
 
 @media (min-width: 565px) {
+
+  /* Navigation bar */
 
   #nav-bar {
     display: flex;
@@ -175,15 +209,69 @@ nav:hover {
     position: relative;
     width: 100%;
   }
-  
-  li:hover {
-    background-color: rgb(0, 162, 255);
-    border-color: rgb(140, 213, 255);
-    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.2);
-  }
 
   li:active {
     opacity: 0.8;
+  }
+
+  /* Presentation div */
+
+  #presentation {
+    position: relative;
+    justify-content: center;
+  }
+
+  /* Propaganda div */
+
+  #propaganda {
+    opacity: 0.8;
+    max-width: 200px;
+    position: absolute;
+    top: 115px;
+    left: 70px;
+  }
+  
+  #propaganda h3 {
+    opacity: 0.8;
+  }
+  
+  #propaganda p {
+    opacity: 0.8;
+  }
+  
+  #propaganda button {
+    opacity: 0.8;
+  }
+
+  .review {
+    width: 100%;
+  }
+}
+
+@media (min-width: 750px) {
+
+  #wrapper {
+    max-width: 800px;
+    margin: auto;
+  }
+
+  #main-car {
+    max-width: 600px;
+    margin: auto;
+  }
+
+  #propaganda {
+    top: 115px;
+    left: 100px;
+  }
+
+  #up-reviews {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  #upgrades, #car-reviews {
+    flex: 1;
   }
 }
