@@ -26,22 +26,18 @@ SET inv_description = REPLACE(
         'a huge interior'
     )
 WHERE inv_id = 10;
--- 5 Join inventory table and classsification table to show model fields and classsification name field where inventory items that are = "Sport"
-SELECT inv_model, class_name
-FROM inventory
-JOIN classification
-ON inventory.class_id = classification.class_id
-WHERE inv_type = 'Sport';
-
+-- 5 Join inventory table and classsification table to select the make and model fields from the inventory table and the classification name field from the classification table for inventory items that belong to the "Sport" category.
+SELECT inv_make,
+    inv_model,
+    classification_name
+FROM public.inventory
+    JOIN classification ON inventory.classification_id = classification.classification_id
+WHERE inventory.classification_id = 2;
 -- 6 Updates all records in the inventory table to add "/vehicles" in the middle of the path in the inv_image and inv_thumbnail
 UPDATE public.inventory
-SET inv_image = REPLACE(
-    inv_image,'/','/vehicles/'
-), inv_thumbnail = REPLACE(
-    inv_thumbnail,'/','/vehicles/'
-);
-WHERE inv_image NOT LIKE '%/vehicles%' AND inv_thumbnail LIKE '%/vehicles%';
-
+SET inv_image = REPLACE(inv_image, '/images/', '/images/vehicles/'),
+    inv_thumbnail = REPLACE(inv_thumbnail, '/images/', '/images/vehicles/')
+WHERE inv_image NOT LIKE '%/vehicles%';
 -- Selects all data from the account table
 SELECT *
 FROM account;
@@ -50,4 +46,4 @@ SELECT *
 FROM classification;
 -- Selects all data from the inventory table
 SELECT *
-FROM inventory; 
+FROM inventory;

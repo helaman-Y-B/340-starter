@@ -236,7 +236,6 @@ VALUES (
         'White',
         5
     );
-
 -- 4 Modify the GM Hummer record
 UPDATE public.inventory
 SET inv_description = REPLACE(
@@ -245,12 +244,8 @@ SET inv_description = REPLACE(
         'a huge interior'
     )
 WHERE inv_id = 10;
-
 -- 6 Updates all records in the inventory table to add "/vehicles" in the middle of the path in the inv_image and inv_thumbnail
 UPDATE public.inventory
-SET inv_image = REPLACE(
-    inv_image,'/','/vehicles/'
-), inv_thumbnail = REPLACE(
-    inv_thumbnail,'/','/vehicles/'
-);
-WHERE inv_image NOT LIKE '%/vehicles%' AND inv_thumbnail LIKE '%/vehicles%';
+SET inv_image = REPLACE(inv_image, '/images/', '/images/vehicles/'),
+    inv_thumbnail = REPLACE(inv_thumbnail, '/images/', '/images/vehicles/')
+WHERE inv_image NOT LIKE '%/vehicles%';
