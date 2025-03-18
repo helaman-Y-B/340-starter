@@ -195,7 +195,7 @@ nav {
   /* Navigation bar */
 
   #nav-bar {
-    display: block;
+    display: flex;
     flex-direction: row;
   }
 
@@ -207,6 +207,7 @@ nav {
   }
 
   #nav-bar li {
+    flex-grow: 1;
     display: block;
     margin: 10px 0;
   }
