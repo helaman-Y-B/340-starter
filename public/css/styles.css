@@ -159,30 +159,29 @@ nav {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 10px;
+  padding: 20px;
   margin: 0px;
+  list-style: none;
 }
 
-#dropdown {
-  display: none;
-  position: absolute;
-  width: 100%;
-  z-index: 1;
+#nav-bar li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+#nav-bar li a {
+  text-decoration: none;
+  color: rgb(56, 56, 56);
 }
 
 #current {
   font-size: 20px;
   list-style-type: none;
   margin: 20px;
+  display: block;
 }
 
-#dropdown li {
-  font-size: 20px;
-  list-style-type: none;
-  margin: 20px;
-}
-
-nav:hover {
+#nav-bar li:hover {
   background-color: rgb(0, 162, 255);
   border-color: rgb(140, 213, 255);
   transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
@@ -198,19 +197,30 @@ nav:hover {
   #nav-bar {
     display: flex;
     flex-direction: row;
+    padding: 0px;
   }
-  
-  li {
-    width: 25%;
+
+  #current {
+    font-size: 17px;
+    list-style-type: none;
     margin: 20px;
+    display: block;
   }
-  
-  #dropdown {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    position: relative;
-    width: 100%;
+
+  #nav-bar li {
+    flex-grow: 1;
+    display: block;
+    margin: 10px 0;
+  }
+
+  #nav-bar li a {
+    display: block;
+    padding: 10px;
+    background-color: rgb(140, 213, 255);
+  }
+
+  #nav-bar li a:hover {
+    background-color: rgb(0, 162, 255);
   }
 
   li:active {
