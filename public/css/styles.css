@@ -195,8 +195,15 @@ nav {
   /* Navigation bar */
 
   #nav-bar {
-    display: none;
+    display: block;
     flex-direction: row;
+  }
+
+  #current {
+    font-size: 17px;
+    list-style-type: none;
+    margin: 20px;
+    display: block;
   }
 
   #nav-bar li {
