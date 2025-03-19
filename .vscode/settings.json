@@ -9,8 +9,8 @@
             "previewLimit": 50,
             "server": "localhost",
             "driver": "PostgreSQL",
-            "name": "cse340db",
-            "connectString": "postgresql://cse340hyb:BDHFKi16dBgg18hVZvUZHZ6ecXCp5XAS@dpg-cv3nes8gph6c73es90eg-a.virginia-postgres.render.com/cse340hyb"
+            "name": "cse340dbhyb",
+            "connectString": "postgresql://hybdb:aDpD1rjq2eMOmIc3zD86RB0qw42QehB9@dpg-cva4bi5ds78s73bvkfbg-a.virginia-postgres.render.com/hybdb"
         }
     ]
 }
