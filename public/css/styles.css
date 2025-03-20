@@ -226,6 +226,10 @@ span {
   font-size: 20px;
 }
 
+#error-gif {
+  margin: auto auto;
+}
+
 /* medias */
 
 @media (min-width: 565px) {

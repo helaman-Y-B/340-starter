@@ -27,6 +27,8 @@ app.set("layout", "./layouts/layout") // not at views root
  *************************/
 app.use(static)
 
+app.use(express.static("public"))
+
 // Index route with a more robust error handler
 app.get("/", utilities.handleErrors(baseController.buildHome))
 
