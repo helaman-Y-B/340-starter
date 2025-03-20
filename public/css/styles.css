@@ -188,6 +188,44 @@ nav {
   box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.2);
 }
 
+/* Inventory pages */
+
+#inv-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0px;
+}
+
+.vehicle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(233, 216, 194);
+  border: 5px solid;
+  border-color: rgb(255, 192, 116);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  max-width: 350px;
+  width: 80vw;
+  height: fit-content;
+}
+
+.vehicle img {
+  max-width: 200px;
+  width: fit-content;
+  margin: auto;
+}
+
+span {
+  font-family: "Nunito", sans-serif;
+  font-size: 20px;
+}
+
 /* medias */
 
 @media (min-width: 565px) {
@@ -270,6 +308,10 @@ nav {
   .review {
     width: 100%;
   }
+
+  .vehicle {
+    max-width: 450px;
+  }
 }
 
 @media (min-width: 750px) {
@@ -298,5 +340,19 @@ nav {
 
   #upgrades, #car-reviews {
     flex: 1;
+  }
+
+  /* Inventory pages for bigger views */
+
+  #inv-display {
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .vehicle {
+    max-width: 300px;
+    max-height: 350px;
+    height: 40vw;
   }
 }
