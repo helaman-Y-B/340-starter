@@ -7,7 +7,7 @@ const Util = {}
 
 Util.getNav = async function (req, res, next) {
     let data = await invModel.getClassifications()
-    console.log(data) // Check the data object
+    // console.log(data) // Check the data object
     let list = "<ul id='nav-bar'>"
     list += "<li id='current'><a href='/' title='Home page'>Home</a></li>"
     data.rows.forEach(row => {
@@ -52,6 +52,25 @@ Util.buildClassificationGrid = async function(data){
       grid += '</ul>'
     } else { 
       grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
+    }
+    return grid
+  }
+
+  Util.buildVehicleGrid = async function(data) {
+    let grid
+    if(data.length > 0){
+      grid = '<div id="vehicle-img">'
+      grid += '<img src="' + data[0].inv_image + '" alt="Image of ' + data[0].inv_model + '" />'
+      grid += '</div>'
+      grid += '<div id="vehicle-details">'
+      grid += '<h2>' + data[0].inv_make + ' ' + data[0].inv_model + '</h2>'
+      grid += '<h3>Price: $' + new Intl.NumberFormat('en-US').format(data[0].inv_price) + '</h3>'
+      grid += '<p>' + data[0].inv_description + '</p>'
+      grid += '<p>Color: ' + data[0].inv_color + '</p>'
+      grid += '<p>Miles: ' + data[0].inv_miles + '</p>'
+      grid += '</div>'
+    } else {
+      grid = '<p class="notice">Sorry, no vehicle details available.</p>'
     }
     return grid
   }
