@@ -226,8 +226,18 @@ span {
   font-size: 20px;
 }
 
+#error-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 #error-gif {
   margin: auto auto;
+  width: 80vw;
+  max-width: 256px;
+  border-radius: 30px;
 }
 
 /* medias */
