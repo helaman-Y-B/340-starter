@@ -27,6 +27,7 @@ app.set("layout", "./layouts/layout") // not at views root
  *************************/
 app.use(static)
 
+// Route for the images
 app.use(express.static("public"))
 
 // Index route with a more robust error handler

@@ -237,7 +237,7 @@ span {
   margin: auto auto;
   width: 80vw;
   max-width: 256px;
-  border-radius: 30px;
+  border-radius: 100%;
 }
 
 /* medias */
