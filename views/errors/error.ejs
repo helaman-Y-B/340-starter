@@ -1,5 +1,11 @@
 <% if (title) { %>
-    <h1>
-        <%= title %>
-    </h1>
+    <div id="error-div">
+        <h1>
+            <%= title %>
+        </h1>
+        <p>
+            <%= message %>
+        </p>
+        <img id="error-gif" src="/images/site/6mG.gif" alt="Error Image">
+    </div>
     <% } else { res.redirect('/') } %>
