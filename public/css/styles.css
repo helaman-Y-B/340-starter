@@ -221,6 +221,28 @@ nav {
   margin: auto;
 }
 
+/* Vehicle pages */
+
+#main-vehicle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(233, 216, 194);
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
+}
+
+#vehicle-img img {
+  max-width: 100%;
+  width: fit-content;
+  margin: auto;
+  border-radius: 10px;
+  border: 5px solid;
+  border-color: rgb(255, 192, 116);
+}
+
 span {
   font-family: "Nunito", sans-serif;
   font-size: 20px;
@@ -326,6 +348,26 @@ span {
   .vehicle {
     max-width: 450px;
   }
+
+  /* Vehicle pages */
+
+  #main-vehicle {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+  }
+
+  #main-vehicle div {
+    margin: 10px;
+  }
+
+  #vehicle-img {
+    max-width: 370px;
+    width: 200vw;
+    margin: auto;
+  }
 }
 
 @media (min-width: 750px) {
@@ -368,5 +410,11 @@ span {
     max-width: 300px;
     max-height: 350px;
     height: 40vw;
+  }
+
+  /* Vehicle pages */
+
+  #main-vehicle {
+    height: 280px;
   }
 }
