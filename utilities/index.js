@@ -56,6 +56,10 @@ Util.buildClassificationGrid = async function(data){
     return grid
   }
 
+  /* **************************************
+  * Build the vehicle view HTML
+  * ************************************ */
+
   Util.buildVehicleGrid = async function(data) {
     let grid
     if(data.length > 0){
