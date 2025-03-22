@@ -13,6 +13,7 @@ const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
 const utilities = require("./utilities/index")
+const errorController = require("./controllers/errorController")
 
 /* ***********************
  * View engine and template
@@ -33,12 +34,15 @@ app.use(express.static("public"))
 // Index route with a more robust error handler
 app.get("/", utilities.handleErrors(baseController.buildHome))
 
+// Route for the error 500 page
+app.get("/error", utilities.handleErrors(errorController.buildError500))
+
 // Inventory routes
 app.use("/inv", inventoryRoute)
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
-  next({status: 404, message: 'Sorry, we appear to have lost that page.'})
+  next({status: 404, message: 'Ops, looks like that you are not worthy to see this content, please return.'})
 })
 
 /* ***********************
