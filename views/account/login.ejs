@@ -6,10 +6,14 @@
 <% } else { res.redirect('/') } %>
 <form>
     <fieldset>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+        <div class="form-group" id="email-form">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group" id="password-form">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
         <button id="login-button" type="submit">Login</button>
     </fieldset>
     <p>No account? <a href="">Sing-up</a></p>
