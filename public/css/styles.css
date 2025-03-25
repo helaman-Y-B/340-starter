@@ -264,9 +264,75 @@ span {
 }
 
 /* Login page */
+
+#login-title {
+  font-family: "Inter", sans-serif;
+  font-size: 30px;
+  margin: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+fieldset {
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  border: 5px solid;
+  border-radius: 10px;
+  border-color: rgb(255, 192, 116);
+  background-color: rgb(218, 241, 255);
+}
+
 .form-group {
   font-family: "Nunito", sans-serif;
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 70vw;
+  max-width: 350px;
+}
+
+#email-form {
+  margin-top: 10px;
+}
+
+label {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  margin: 5px;
+}
+
+input {
+  font-family: "Nunito", sans-serif;
+  font-size: 20px;
+  width: 70vw;
+  max-width: 350px;
+  height: 30px;
+  margin: 5px;
+  padding: 5px;
+  border: 2px solid rgb(0, 162, 255);
+  border-radius: 5px;
+}
+
+#login-button {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  width: 150px;
+  height: 50px;
+  margin: auto;
+  margin-top: 10px;
+  background-color: rgb(140, 213, 255);
+  border: 2px solid;
+  border-color: rgb(0, 162, 255);
+  border-radius: 50px;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* medias */
@@ -374,6 +440,43 @@ span {
     max-width: 370px;
     width: 200vw;
     margin: auto;
+  }
+
+  /* Login page */
+
+  #login-title {
+    margin-left: 55px;
+  }
+
+  fieldset {
+    justify-content: left; 
+    align-items: start; 
+    width: 70vw;
+    max-width: 530px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70vw;
+    max-width: 500px;
+  }
+
+  .form-group label {
+    flex: 1;
+    text-align: left;
+  }
+
+  .form-group input {
+    flex: 4;
+    text-align: left;
+    margin-left: 10px;
+  }
+
+  #login-button {
+    margin: 0px;
+    margin-top: 10px;
   }
 }
 
