@@ -263,6 +263,12 @@ span {
   border-radius: 100%;
 }
 
+/* Login page */
+.form-group {
+  font-family: "Nunito", sans-serif;
+  margin-bottom: 10px;
+}
+
 /* medias */
 
 @media (min-width: 565px) {
