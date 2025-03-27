@@ -452,7 +452,7 @@ input {
     justify-content: left; 
     align-items: start; 
     width: 70vw;
-    max-width: 530px;
+    max-width: 430px;
   }
 
   .form-group {
@@ -460,7 +460,7 @@ input {
     flex-direction: row;
     justify-content: space-between;
     width: 70vw;
-    max-width: 500px;
+    max-width: 400px;
   }
 
   .form-group label {
@@ -469,7 +469,7 @@ input {
   }
 
   .form-group input {
-    flex: 4;
+    flex: 1;
     text-align: left;
     margin-left: 10px;
   }
@@ -478,6 +478,10 @@ input {
     margin: 0px;
     margin-top: 10px;
   }
+
+  /* Registration page */
+
+
 }
 
 @media (min-width: 750px) {
