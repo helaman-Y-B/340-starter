@@ -4,23 +4,23 @@
     </h1>
     <% messages() %>
         <% } else { res.redirect('/') } %>
-            <form>
+            <form action="/account/registration" method="post">
                 <fieldset>
                     <div class="form-group" id="fname-form">
-                        <label for="fname">First Name:</label>
-                        <input type="text" id="fname" name="fname" required>
+                        <label for="account_firstname">First Name:</label>
+                        <input type="text" id="fname" name="account_firstname" required>
                     </div>
                     <div class="form-group" id="lname-form">
-                        <label for="lname">Last Name:</label>
-                        <input type="text" id="lname" name="lname" required>
+                        <label for="account_lastname">Last Name:</label>
+                        <input type="text" id="lname" name="account_lastname" required>
                     </div>
                     <div class="form-group" id="email-form">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
+                        <label for="account_email">Email:</label>
+                        <input type="email" id="email" name="account_email" required>
                     </div>
                     <div class="form-group" id="password-form">
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" required>
+                        <label for="account_password">Password:</label>
+                        <input type="password" id="password" name="account_password" required>
                     </div>
                     <p id="password-requirements">Password must be minimum of 12 characters and include 1 capital
                         letter, 1 number and 1 special character.</p>
