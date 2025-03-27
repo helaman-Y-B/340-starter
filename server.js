@@ -6,11 +6,12 @@
  * Require Statements
  *************************/
 const session = require("express-session")
-const pool = require("./database")
 const express = require("express")
 const expressLayouts = require("express-ejs-layouts")
+const bodyParser = require("body-parser")
 const env = require("dotenv").config()
 const app = express()
+const pool = require("./database")
 const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
@@ -39,6 +40,10 @@ app.use(function(req, res, next){
   next()
 })
 
+// Body-parser usage Middleware
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true })) // For parsing application/x-www-form-urlencoded
+
 /* ***********************
  * View engine and template
  *************************/
@@ -64,7 +69,7 @@ app.get("/error", utilities.handleErrors(errorController.buildError500))
 app.use("/inv", inventoryRoute)
 
 // Account routes
-app.use("/account", utilities.handleErrors(accountController.buildAccount))
+app.use("/account", require("./routes/accountRoute"))
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
