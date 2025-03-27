@@ -321,6 +321,16 @@ input {
   border-radius: 5px;
 }
 
+input:required:invalid, input:focus:invalid {
+  background-color: rgb(255, 128, 128);
+  border-color: red;
+ }
+
+ input:required:valid {
+  background-color: rgb(170, 253, 170);
+  border-color: green;
+ }
+
 #show-password {
   font-family: "Inter", sans-serif;
   font-size: 15px;

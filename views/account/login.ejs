@@ -8,11 +8,13 @@
                 <fieldset>
                     <div class="form-group" id="email-form">
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
+                        <input pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$" type="email" id="email"
+                            name="email" required>
                     </div>
                     <div class="form-group" id="password-form">
                         <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" required>
+                        <input pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*.\-_=+¨|\/]).{12,}$" type="password"
+                            id="password" name="password" required placeholder="Enter a valid password">
                     </div>
                     <p id="password-requirements">Password must be minimum of 12 characters and include 1 capital
                         letter, 1 number and 1 special character.</p>
@@ -21,4 +23,4 @@
                     <p>No account? <a href="/account/registration">Sing-up</a></p>
                 </fieldset>
             </form>
-            <script src="/js/showPassword.js"></script>
+            <script src="/js/formUtils.js"></script>
