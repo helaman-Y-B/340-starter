@@ -321,6 +321,21 @@ input {
   border-radius: 5px;
 }
 
+#show-password {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  width: 100px;
+  height: 50px;
+  margin: auto;
+  margin-top: 10px;
+  background-color: rgb(140, 213, 255);
+  border: 2px solid;
+  border-color: rgb(0, 162, 255);
+  border-radius: 50px;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+}
+
 #login-button {
   font-family: "Inter", sans-serif;
   font-size: 20px;
@@ -477,6 +492,11 @@ input {
   #login-button {
     margin: 0px;
     margin-top: 10px;
+  }
+
+  #show-password {
+    margin: 0px;
+    margin-bottom: 10px;
   }
 
   /* Registration page */
