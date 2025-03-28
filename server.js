@@ -14,7 +14,6 @@ const app = express()
 const pool = require("./database")
 const static = require("./routes/static")
 const inventoryRoute = require("./routes/inventoryRoute")
-const managementRoute = require("./routes/managementRoute")
 const baseController = require("./controllers/baseController")
 const accountController = require("./controllers/accountController")
 const errorController = require("./controllers/errorController")
@@ -71,9 +70,6 @@ app.use("/inv", inventoryRoute)
 
 // Account routes
 app.use("/account", require("./routes/accountRoute"))
-
-// Management routes
-app.use("/management", managementRoute)
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {

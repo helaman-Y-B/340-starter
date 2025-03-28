@@ -360,6 +360,35 @@ input:required:invalid, input:focus:invalid {
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
 }
 
+/* management page */
+
+#management-links {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid;
+  border-radius: 5px;
+  padding: 10px;
+  margin: auto;
+  max-width: 300px;
+  background-color: rgb(181, 228, 255);
+  border-color: rgb(0, 162, 255);
+}
+
+#management-links a {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  margin: 10px 0px 10px 0px;
+}
+
+legend {
+  font-family: "Inter", sans-serif;
+  background-color: rgb(181, 228, 255);
+  border: 5px solid;
+  border-color: rgb(255, 192, 116);
+  border-radius: 5px;
+  padding: 5px;
+}
+
 /* medias */
 
 @media (min-width: 565px) {

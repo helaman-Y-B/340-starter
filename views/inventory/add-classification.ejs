@@ -1,0 +1,17 @@
+<% if (title) { %>
+    <h1>
+        <%= title %>
+    </h1>
+    <%- messages() %>
+        <% } else { res.redirect('/') } %>
+            <div id="add-management">
+                <form>
+                    <fieldset>
+                        <legend>ADD A NEW CLASSIFICATION</legend>
+                        <!-- The "for" and "name" needs to be the same name as in the database -->
+                        <label for="classification_name">ADD A NEW CLASSIFICATION</label>
+                        <input type="text" name="classification_name" id="classification_name">
+                        <p>The classification name cannot contain any spaces or special character of any kind.</p>
+                    </fieldset>
+                </form>
+            </div>
