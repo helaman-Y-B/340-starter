@@ -27,4 +27,9 @@ router.get(
     utilities.handleErrors(managementController.buildAddClassification)
   );
 
+  router.post(
+    "/add-classification",
+    utilities.handleErrors(managementController.addNewClassification)
+  );
+
 module.exports = router;

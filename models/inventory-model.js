@@ -41,19 +41,20 @@ async function getInventoryByInvId(inv_id) {
     
 }
 
-async function pushNewClassification(classification_name) {
+async function postNewClassification(classification_name) {
     try {
-        await pool.query(
+        const sql = await pool.query(
             `INSERT INTO classification (
             classification_name
             ) VALUES (
             ${classification_name} 
             )`
         )
+        return await pool.query(sql, [classification_name])
     } catch (error) {
-        console.error("pushNewClassification error " + error);
+        console.error("postNewClassification error " + error);
     }
 }
 
 
-module.exports = { getClassifications, getInventoryByClassificationId, getInventoryByInvId, pushNewClassification };
+module.exports = { getClassifications, getInventoryByClassificationId, getInventoryByInvId, postNewClassification };
