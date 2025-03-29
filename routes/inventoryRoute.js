@@ -38,4 +38,9 @@ router.get(
     utilities.handleErrors(managementController.addNewClassification)
   );
 
+  router.get(
+    "/add-inventory",
+    utilities.handleErrors(managementController.buildAddInventory)
+  )
+
 module.exports = router;

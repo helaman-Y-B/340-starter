@@ -6,12 +6,14 @@
         <% } else { res.redirect('/') } %>
             <div id="management-links">
                 <a href="/inv/add-classification">Add new classification</a>
-                <a href="">Add new inventory</a>
+                <a href="/inv/add-inventory">Add new inventory</a>
             </div>
-            <% if (errors) { %>
+        <!--
+        <% if (errors) { %>
                 <ul class="notice">
                <% errors.array().forEach(error => { %>
                  <li><%= error.msg %></li>
               <%  }) %>
                </ul>
-              <% } %>
+              <% } %>    
+        -->

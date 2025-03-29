@@ -380,6 +380,11 @@ input:required:invalid, input:focus:invalid {
   margin: 10px 0px 10px 0px;
 }
 
+fieldset {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 legend {
   font-family: "Inter", sans-serif;
   background-color: rgb(181, 228, 255);

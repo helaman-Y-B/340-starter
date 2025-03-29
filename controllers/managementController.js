@@ -57,6 +57,15 @@ management.addNewClassification = async function (req, res) {
         }
 }
 
+management.buildAddInventory = async function (req, res) {
+  let nav = await utilities.getNav()
+  res.render("./inventory/add-inventory", {
+    title: "Add new inventory item",
+    nav,
+    errors: null,
+  })
+}
+
 
 
 module.exports = management;
