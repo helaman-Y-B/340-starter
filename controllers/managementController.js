@@ -60,9 +60,11 @@ management.addNewClassification = async function (req, res) {
 
 management.buildAddInventory = async function (req, res) {
   let nav = await utilities.getNav()
+  let optionsGrid = await utilities.buildClassificationList()
   res.render("./inventory/add-inventory", {
     title: "Add new inventory item",
     nav,
+    optionsGrid,
     errors: null,
   })
 }
@@ -90,6 +92,7 @@ management.addNewInventory = async function (req, res) {
       res.status(501).render("./inventory/add-inventory", {
         title: "Add new inventory item",
         nav,
+        optionsGrid,
         errors: null,
       })
     }

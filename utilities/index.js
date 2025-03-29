@@ -81,6 +81,30 @@ Util.buildVehicleGrid = async function(data) {
 }
 
 /* **************************************
+  * Build the classification dropdow to the add-inventory view
+  * ************************************ */
+
+Util.buildClassificationList = async function (classification_id = null) {
+  let data = await invModel.getClassifications()
+  let options = 
+  '<legend>CHOOSE A CLASSIFICATION</legend>'
+  options += '<select name="classification_id" id="classificationList" required>'
+  options += '<option value="">Choose a Classification</option>'
+  data.rows.forEach((row) => {
+    options += '<option value="' + row.classification_id + '"'
+    if (
+      classification_id != null &&
+      row.classification_id == classification_id
+    ) {
+      options += " selected "
+    }
+    options += ">" + row.classification_name + "</option>"
+  })
+  options += "</select>"
+  return options
+}
+
+/* **************************************
   * Build the error 500 view
   * ************************************ */
 

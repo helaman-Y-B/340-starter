@@ -6,6 +6,9 @@
         <% } else { res.redirect('/') } %>
             <div id="add-management">
                 <form action="/inv/add-inventory" method="post">
+                    <fieldset id="classification-dropdown">
+                        <%- optionsGrid %>
+                    </fieldset>
                     <fieldset>
                         <legend>ADD THE PRODUCER</legend>
                         <!-- The "for" and "name" needs to be the same name as in the database -->
