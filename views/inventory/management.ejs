@@ -2,17 +2,18 @@
     <h1 id="management-title">
         <%= title %>
     </h1>
-    <%- messages() %>
-        <% } else { res.redirect('/') } %>
-            <div id="management-links">
-                <a href="/inv/add-classification">Add new classification</a>
-                <a href="/inv/add-inventory">Add new inventory</a>
-            </div>
-        <% if (errors) { %>
-                <ul class="notice">
-               <% errors.array().forEach(error => { %>
-                 <li><%= error.msg %></li>
-              <%  }) %>
-               </ul>
-              <% } %>    
-    
+    <% if (errors) { %>
+        <ul class="notice">
+            <% errors.array().forEach(error=> { %>
+                <li>
+                    <%= error.msg %>
+                </li>
+                <% }) %>
+        </ul>
+        <% } %>
+            <%- messages() %>
+                <% } else { res.redirect('/') } %>
+                    <div id="management-links">
+                        <a href="/inv/add-classification">Add new classification</a>
+                        <a href="/inv/add-inventory">Add new inventory</a>
+                    </div>

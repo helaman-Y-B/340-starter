@@ -24,7 +24,7 @@ management.buildAddClassification = async function (req, res) {
 
     let nav = await utilities.getNav()
     res.render("./inventory/add-classification", {
-        title: "Add Classification page",
+        title: "Add New Classification",
         nav,
         errors: null,
     })
@@ -51,7 +51,7 @@ management.addNewClassification = async function (req, res) {
         } else {
           req.flash("notice", "Sorry, failed to add new classification.")
           res.status(501).render("./inventory/add-classification", {
-            title: "Add Classification page",
+            title: "Add New Classification",
             nav,
             errors: null,
           })
@@ -72,7 +72,9 @@ management.buildAddInventory = async function (req, res) {
 management.addNewInventory = async function (req, res) {
   let nav = await utilities.getNav()
     const { inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id } = req.body
-      
+    
+    let optionsGrid = await utilities.buildClassificationList()
+
     const regResult = await invModel.postNewInventory(
       inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id
     )
@@ -80,7 +82,7 @@ management.addNewInventory = async function (req, res) {
     if (regResult) {
       req.flash(
         "notice",
-        `Added the new inventory item, successfully!`
+        "Added the new inventory item, successfully!"
       )
       res.status(201).render("./inventory/management", {
         title: "Management page",

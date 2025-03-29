@@ -2,18 +2,29 @@
     <h1>
         <%= title %>
     </h1>
-    <%- messages() %>
-        <% } else { res.redirect('/') } %>
-            <div id="add-management">
-                <form action="/inv/add-classification" method="post">
-                    <fieldset>
-                        <legend>ADD A NEW CLASSIFICATION</legend>
-                        <!-- The "for" and "name" needs to be the same name as in the database -->
-                        <label for="classification_name">ADD A NEW CLASSIFICATION</label>
-                        <input type="text" name="classification_name" id="classification_name" pattern="^[a-zA-Z0-9]+$">
-                        <p>The classification name cannot contain any spaces or special character of any kind.</p>
-                    </fieldset>
-                    <button class="submit-button" id="add-classification-button" type="submit">Add
-                        classification</button>
-                </form>
-            </div>
+    <% if (errors) { %>
+        <ul class="notice">
+            <% errors.array().forEach(error=> { %>
+                <li>
+                    <%= error.msg %>
+                </li>
+                <% }) %>
+        </ul>
+        <% } %>
+            <%- messages() %>
+                <% } else { res.redirect('/') } %>
+                    <div id="add-management">
+                        <form action="/inv/add-classification" method="post">
+                            <fieldset>
+                                <legend>ADD A NEW CLASSIFICATION</legend>
+                                <!-- The "for" and "name" needs to be the same name as in the database -->
+                                <label for="classification_name">ADD A NEW CLASSIFICATION</label>
+                                <input type="text" name="classification_name" id="classification_name"
+                                    pattern="^[a-zA-Z0-9]+$">
+                                <p>The classification name cannot contain any spaces or special character of any kind.
+                                </p>
+                            </fieldset>
+                            <button class="submit-button" id="add-classification-button" type="submit">Add
+                                classification</button>
+                        </form>
+                    </div>

@@ -34,7 +34,7 @@ router.get(
   router.post(
     "/add-classification",
     regValidate.addClassification(),
-    regValidate.checkRegData,
+    regValidate.checkClassificationData,
     utilities.handleErrors(managementController.addNewClassification)
   );
 
@@ -45,8 +45,8 @@ router.get(
 
   router.post(
     "/add-inventory",
-    //regValidate.addInventory(),
-    //regValidate.checkRegData,
+    regValidate.addInventory(),
+    regValidate.checkInventoryData,
     utilities.handleErrors(managementController.addNewInventory)
   );
 
