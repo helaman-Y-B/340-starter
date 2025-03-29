@@ -71,10 +71,10 @@ management.buildAddInventory = async function (req, res) {
 
 management.addNewInventory = async function (req, res) {
   let nav = await utilities.getNav()
-    const { inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color } = req.body
+    const { inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id } = req.body
       
     const regResult = await invModel.postNewInventory(
-      inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color
+      inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id
     )
       
     if (regResult) {
