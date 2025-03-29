@@ -43,4 +43,11 @@ router.get(
     utilities.handleErrors(managementController.buildAddInventory)
   )
 
+  router.post(
+    "/add-inventory",
+    regValidate.addInventory(),
+    regValidate.checkRegData,
+    utilities.handleErrors(managementController.addNewInventory)
+  );
+
 module.exports = router;

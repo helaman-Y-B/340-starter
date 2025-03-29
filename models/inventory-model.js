@@ -52,8 +52,32 @@ async function postNewClassification(classification_name) {
         return result.rows[0];
     } catch (error) {
         console.error("postNewClassification error " + error);
+        throw error;
+    }
+}
+
+async function postNewInventory(inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color) {
+    try {
+        const sql = `INSERT INTO inventory (
+                    inv_make, 
+                    inv_model, 
+                    inv_year, 
+                    inv_description, 
+                    inv_image, 
+                    inv_thumbnail, 
+                    inv_price, 
+                    inv_miles, 
+                    inv_color
+                    ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+                     RETURNING *`;
+    
+        const result = await pool.query(sql, [inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color]);
+        return result.rows[0];
+    } catch (error) {
+        console.error("postNewInventory error " + error);
+        throw error;
     }
 }
 
 
-module.exports = { getClassifications, getInventoryByClassificationId, getInventoryByInvId, postNewClassification };
+module.exports = { getClassifications, getInventoryByClassificationId, getInventoryByInvId, postNewClassification, postNewInventory };

@@ -66,6 +66,34 @@ management.buildAddInventory = async function (req, res) {
   })
 }
 
+management.addNewInventory = async function (req, res) {
+  let nav = await utilities.getNav()
+    const { inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color } = req.body
+      
+    const regResult = await invModel.postNewInventory(
+      inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color
+    )
+      
+    if (regResult) {
+      req.flash(
+        "notice",
+        `Added the new inventory item, successfully!`
+      )
+      res.status(201).render("./inventory/management", {
+        title: "Management page",
+        nav,
+        errors: null,
+      })
+    } else {
+      req.flash("notice", "Sorry, failed to add new item to the inventory.")
+      res.status(501).render("./inventory/add-inventory", {
+        title: "Add new inventory item",
+        nav,
+        errors: null,
+      })
+    }
+}
+
 
 
 module.exports = management;
