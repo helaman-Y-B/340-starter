@@ -45,8 +45,8 @@ router.get(
 
   router.post(
     "/add-inventory",
-    regValidate.addInventory(),
-    regValidate.checkRegData,
+    //regValidate.addInventory(),
+    //regValidate.checkRegData,
     utilities.handleErrors(managementController.addNewInventory)
   );
 

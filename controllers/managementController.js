@@ -12,6 +12,7 @@ management.buildManagement = async function (req, res) {
     res.render("./inventory/management", {
         title: "Management page",
         nav,
+        errors: null,
     })
 }
 
