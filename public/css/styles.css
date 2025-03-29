@@ -394,6 +394,13 @@ legend {
   padding: 5px;
 }
 
+/* Validation */
+
+.notice {
+  font-family: "Nunito", sans-serif;
+  color: rgb(255, 0, 0);
+}
+
 /* medias */
 
 @media (min-width: 565px) {
