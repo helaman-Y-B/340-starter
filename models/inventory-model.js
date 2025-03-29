@@ -43,14 +43,13 @@ async function getInventoryByInvId(inv_id) {
 
 async function postNewClassification(classification_name) {
     try {
-        const sql = await pool.query(
-            `INSERT INTO classification (
-            classification_name
-            ) VALUES (
-            ${classification_name} 
-            )`
-        )
-        return await pool.query(sql, [classification_name])
+        const sql = `INSERT INTO classification (
+                    classification_name
+                    ) VALUES ($1)
+                     RETURNING *`;
+    
+        const result = await pool.query(sql, [classification_name]);
+        return result.rows[0];
     } catch (error) {
         console.error("postNewClassification error " + error);
     }

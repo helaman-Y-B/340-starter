@@ -25,6 +25,7 @@ management.buildAddClassification = async function (req, res) {
     res.render("./inventory/add-classification", {
         title: "Add Classification page",
         nav,
+        errors: null,
     })
 }
 
@@ -41,15 +42,17 @@ management.addNewClassification = async function (req, res) {
             "notice",
             `Added ${classification_name}, successfully!`
           )
-          res.status(201).render("inv/management", {
+          res.status(201).render("./inventory/management", {
             title: "Management page",
             nav,
+            errors: null,
           })
         } else {
           req.flash("notice", "Sorry, failed to add new classification.")
-          res.status(501).render("inv/add-classification", {
+          res.status(501).render("./inventory/add-classification", {
             title: "Add Classification page",
             nav,
+            errors: null,
           })
         }
 }
