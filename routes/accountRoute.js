@@ -55,6 +55,14 @@ router.get(
   utilities.handleErrors(accountController.buildAccount)
 );
 
+// Process the login request
+router.post(
+  "/login",
+  regValidate.loginRules(),
+  regValidate.checkLoginData,
+  utilities.handleErrors(accountController.accountLogin)
+)
+
 // Route to build the registration view
 router.get(
   "/registration",

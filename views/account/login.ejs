@@ -4,7 +4,7 @@
     </h1>
     <%- messages() %>
         <% } else { res.redirect('/') } %>
-            <form>
+            <form id="loginForm" action="/account/login" method="post">
                 <fieldset>
                     <div class="form-group" id="email-form">
                         <label for="email">Email:</label>
