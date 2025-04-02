@@ -1,0 +1,6 @@
+<% if (title) { %>
+    <h1 id="logged-title">
+        <%= title %>
+    </h1>
+    <%- messages() %>
+        <% } else { res.redirect('/') } %>

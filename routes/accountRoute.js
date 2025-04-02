@@ -1,5 +1,6 @@
 // Needed Resources
 const express = require("express");
+const regValidate = require('../utilities/account-validation')
 const router = new express.Router();
 const accountController = require("../controllers/accountController");
 const utilities = require("../utilities/index");
@@ -49,11 +50,28 @@ const validateRegistration = (req, res, next) => {
   next();
 };
 
+// Default route for the login page
+router.get(
+  "/",
+  utilities.handleErrors(accountController.buildLogged)
+);
+
 // Route to build the login view
 router.get(
   "/login",
   utilities.handleErrors(accountController.buildAccount)
 );
+
+// Process the login attempt
+router.post(
+  "/login",
+  regValidate.loginRules(),
+  regValidate.checkLogData,
+  utilities.handleErrors(accountController.buildLogged),
+  (req, res) => {
+    res.status(200).send('login process')
+  }
+)
 
 // Route to build the registration view
 router.get(
@@ -65,6 +83,8 @@ router.get(
 router.post(
   "/registration", 
   validateRegistration,
+  regValidate.registationRules(),
+  regValidate.checkRegData,
   utilities.handleErrors(accountController.registerAccount)
 );
 

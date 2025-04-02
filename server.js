@@ -9,13 +9,13 @@ const session = require("express-session")
 const express = require("express")
 const expressLayouts = require("express-ejs-layouts")
 const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
 const env = require("dotenv").config()
 const app = express()
 const pool = require("./database")
 const static = require("./routes/static")
 const inventoryRoute = require("./routes/inventoryRoute")
 const baseController = require("./controllers/baseController")
-const accountController = require("./controllers/accountController")
 const errorController = require("./controllers/errorController")
 const utilities = require("./utilities/index")
 
@@ -43,6 +43,10 @@ app.use(function(req, res, next){
 // Body-parser usage Middleware
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // For parsing application/x-www-form-urlencoded
+
+// Cookie middleware
+app.use(cookieParser())
+app.use(utilities.checkJWTToken)
 
 /* ***********************
  * View engine and template
