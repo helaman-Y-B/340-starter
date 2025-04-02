@@ -50,4 +50,15 @@ router.get(
     utilities.handleErrors(managementController.addNewInventory)
   );
 
+  router.get(
+    "/delete-confirm/:inv_id",
+    utilities.handleErrors(managementController.buildDelete)
+  )
+
+  router.post(
+    // Correct route - /delete-confirm/:inv_id
+    "/delete-confirm/:inv_id",
+    utilities.handleErrors(managementController.deleteItem)
+  )
+
 module.exports = router;

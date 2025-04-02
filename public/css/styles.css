@@ -380,6 +380,16 @@ input:required:invalid, input:focus:invalid {
   margin: 10px 0px 10px 0px;
 }
 
+#update-delete {
+  margin-top: 10px;
+  
+}
+
+#delete-btn {
+  padding: 10px;
+  font-family: "Inter", sans-serif;
+}
+
 fieldset {
   margin-top: 10px;
   margin-bottom: 10px;
