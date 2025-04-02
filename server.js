@@ -16,7 +16,6 @@ const pool = require("./database")
 const static = require("./routes/static")
 const inventoryRoute = require("./routes/inventoryRoute")
 const baseController = require("./controllers/baseController")
-const accountController = require("./controllers/accountController")
 const errorController = require("./controllers/errorController")
 const utilities = require("./utilities/index")
 
@@ -46,6 +45,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // For parsing application/x-www-form-urlencoded
 
 app.use(cookieParser())
+app.use(utilities.checkJWTToken)
 
 /* ***********************
  * View engine and template

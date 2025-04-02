@@ -57,6 +57,24 @@ async function accountLogin(req, res) {
 }
 
 /* ****************************************
+ *  Process logged view
+ * ************************************ */
+async function buildLogged(req, res) {
+  let nav = await utilities.getNav()
+  //const { account_email } = req.body
+  //const data = await registerModel.getAccountByEmail(account_email)
+  req.flash(
+    "notice",
+    `Welcome citizen!`
+  )
+  res.render("account/logged", {
+      title: "You're logged in!",
+      nav,
+      errors: null
+  })
+}
+
+/* ****************************************
 *  Deliver registration view
 * *************************************** */
 async function buildRegistration(req, res, next) {
@@ -101,4 +119,4 @@ async function registerAccount(req, res) {
   }
 
 
-module.exports = { buildAccount, buildRegistration, registerAccount };
+module.exports = { buildAccount, accountLogin, buildLogged, buildRegistration, registerAccount };
