@@ -1,6 +1,7 @@
 const utilities = require("../utilities/index");
-const registerModel = require("../models/account-model");
-const jwt = require("jsonwebtoken")
+const accountModel = require("../models/account-model");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 require("dotenv").config()
 
 /* ****************************************
@@ -20,7 +21,9 @@ async function buildAccount(req, res, next) {
 async function accountLogin(req, res) {
   let nav = await utilities.getNav()
   const { account_email, account_password } = req.body
+
   const accountData = await accountModel.getAccountByEmail(account_email)
+
   if(!accountData) {
     req.flash("notice", "Please check your credentials and try again.")
     res.status(400).render("account/login", {
@@ -63,7 +66,7 @@ async function accountLogin(req, res) {
 async function buildLogged(req, res) {
   let nav = await utilities.getNav()
   //const { account_email } = req.body
-  //const data = await registerModel.getAccountByEmail(account_email)
+  //const data = await accountModel.getAccountByEmail(account_email)
   req.flash(
     "notice",
     `Welcome citizen!`
@@ -94,7 +97,7 @@ async function registerAccount(req, res) {
     let nav = await utilities.getNav()
     const { account_firstname, account_lastname, account_email, account_password } = req.body
   
-    const regResult = await registerModel.postRegistration(
+    const regResult = await accountModel.postRegistration(
       account_firstname,
       account_lastname,
       account_email,
@@ -112,7 +115,7 @@ async function registerAccount(req, res) {
       })
     } else {
       req.flash("notice", "Sorry, the registration failed.")
-      res.status(501).render("account/register", {
+      res.status(501).render("account/registration", {
         title: "Registration",
         nav,
       })
