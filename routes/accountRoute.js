@@ -53,6 +53,7 @@ const validateRegistration = (req, res, next) => {
 // Default route for the login page
 router.get(
   "/",
+  utilities.checkLogin,
   utilities.handleErrors(accountController.buildLogged)
 );
 
