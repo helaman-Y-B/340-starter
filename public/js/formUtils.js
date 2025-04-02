@@ -1,7 +1,7 @@
 
 
 // Show password event listener
-const passwordField = document.getElementById("password");
+const passwordField = document.getElementById("account_password");
 const showPassword = document.getElementById("show-password");
 
 showPassword.addEventListener("click", () => {

@@ -24,7 +24,7 @@
                     <div class="form-group" id="password-form">
                         <label for="account_password">Password:</label>
                         <input pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*.\-_=+¨|\/]).{12,}$" type="password"
-                            id="password" name="account_password" required placeholder="Enter a valid password">
+                            id="account_password" name="account_password" required placeholder="Enter a valid password">
                     </div>
                     <p id="password-requirements">Password must be minimum of 12 characters and include 1 capital
                         letter, 1 number and 1 special character.</p>
@@ -36,8 +36,10 @@
             <script src="/js/formUtils.js"></script>
             <% if (errors) { %>
                 <ul class="notice">
-               <% errors.array().forEach(error => { %>
-                 <li><%= error.msg %></li>
-              <%  }) %>
-               </ul>
-              <% } %>
+                    <% errors.array().forEach(error=> { %>
+                        <li>
+                            <%= error.msg %>
+                        </li>
+                        <% }) %>
+                </ul>
+                <% } %>
