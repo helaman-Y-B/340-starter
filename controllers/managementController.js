@@ -100,6 +100,52 @@ management.addNewInventory = async function (req, res) {
     }
 }
 
+/* ***************************
+ *  Build the delete view
+ * ************************** */
+management.buildDelete = async function (req, res) {
+  let nav = await utilities.getNav()
+  const inv_id = req.params.inv_id;
+  const data = await utilities.getInventoryByInvId(inv_id)
+  const inv_make = data[0].inv_make;
+  const inv_model = data[0].inv_model;
+  const inv_price = data[0].inv_price;
+  const inv_year = data[0].inv_year;
+
+  res.render("./inventory/delete-confirm", {
+    title: "Select an item to delete",
+    nav,
+    inv_make,
+    inv_model,
+    inv_price,
+    inv_year,
+    inv_id,
+    errors: null,
+  })
+}
+
+/* ***************************
+ *  Delete the inventory item
+ * ************************** */
+management.deleteItem = async function (req, res) {
+  const inv_id = req.params.inv_id;
+  const deletion = invModel.deletion(inv_id)
+
+  if(deletion) {
+    req.flash(
+      "notice", "Deletion successful."
+    )
+  } else {
+    req.flash(
+      "notice", "Deletion was not successful."
+    )
+    res.redirect(`./inventory/delete-confirm/:${inv_id}`, {
+      title: "Select an item to delete",
+      nav,
+      errors: null,
+    })
+  }
+}
 
 
 module.exports = management;

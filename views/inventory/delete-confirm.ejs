@@ -1,0 +1,33 @@
+<% if (title) { %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% if (errors) { %>
+        <ul class="notice">
+            <% errors.array().forEach(error=> { %>
+                <li>
+                    <%= error.msg %>
+                </li>
+                <% }) %>
+        </ul>
+        <% } %>
+            <%- messages() %>
+                <% } else { res.redirect('/') } %>
+                    <div id="delete-item">
+                        <form action="/inv/delete/<%= inv_id %>" method="post">
+                            <fieldset>
+                                <legend>Delete Items</legend>
+                                <p>Are you sure you want to delete this item? The delete is permanent.</p>
+                                <label for="inv_make">Make:</label>
+                                <input name="inv_make" id="inv_make" type="text" value="<%= inv_make %>" readonly>
+                                <label for="inv_model">Model:</label>
+                                <input name="inv_model" id="inv_model" type="text" value="<%= inv_model %>" readonly>
+                                <label for="inv_price">Price:</label>
+                                <input name="inv_price" id="inv_price" type="text" value="<%= inv_price %>" readonly>
+                                <label for="inv_year">Year:</label>
+                                <input name="inv_year" id="inv_year" type="text" value="<%= inv_year %>" readonly>
+                                <input type="hidden" id="inv_id" name="inv_id">
+                            </fieldset>
+                            <button class="submit-button" id="delete" type="submit">Delete</button>
+                        </form>
+                    </div>

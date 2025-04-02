@@ -80,5 +80,17 @@ async function postNewInventory(inv_make, inv_model, inv_year, inv_description, 
     }
 }
 
+// To the delete the an item in the inventory
+async function deletion(inv_id) {
+    try {
+        const sql = `DELETE FROM inventory WHERE inv_id = $1`
+        const data = await pool.query(sql, [inv_id])
+        return data
+    } catch (error){
+        console.error("deletion error" + error)
+        throw error;
+    }
+}
 
-module.exports = { getClassifications, getInventoryByClassificationId, getInventoryByInvId, postNewClassification, postNewInventory };
+
+module.exports = { getClassifications, getInventoryByClassificationId, getInventoryByInvId, postNewClassification, postNewInventory, deletion };
