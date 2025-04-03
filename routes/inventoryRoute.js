@@ -38,11 +38,13 @@ router.get(
     utilities.handleErrors(managementController.addNewClassification)
   );
 
+  // Route to build add-inventory view
   router.get(
     "/add-inventory",
     utilities.handleErrors(managementController.buildAddInventory)
-  )
+  );
 
+  // Route for the post add-inventory view
   router.post(
     "/add-inventory",
     regValidate.addInventory(),
@@ -50,15 +52,21 @@ router.get(
     utilities.handleErrors(managementController.addNewInventory)
   );
 
+  // Route to build add-classification view
+  router.get(
+    "/getInventory/:classification_id",
+    utilities.handleErrors(invController.getInventoryJSON)
+  )
+
   router.get(
     "/delete-confirm/:inv_id",
     utilities.handleErrors(managementController.buildDelete)
-  )
+  );
 
   router.post(
     // Correct route - /delete-confirm/:inv_id
     "/delete-confirm/:inv_id",
     utilities.handleErrors(managementController.deleteItem)
-  )
+  );
 
 module.exports = router;
