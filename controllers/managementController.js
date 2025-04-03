@@ -9,9 +9,11 @@ const management = {}
  * ************************** */
 management.buildManagement = async function (req, res) {
     let nav = await utilities.getNav()
+    const classificationList = await utilities.buildClassificationList()
     res.render("./inventory/management", {
         title: "Management page",
         nav,
+        classificationList,
         errors: null,
     })
 }

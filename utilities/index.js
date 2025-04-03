@@ -146,12 +146,13 @@ Util.checkJWTToken = (req, res, next) => {
       req.cookies.jwt,
       process.env.ACCESS_TOKEN_SECRET,
       function(err, accountData) {
+        console.log("AccountData in utils=", accountData)
         if (err) {
           req.flash("Please log in")
           res.clearCookie("jwt")
           return res.redirect("/account/login")
         }
-        res.localsName.accountData = accountData
+        res.locals.accountData = accountData
         res.locals.loggedin = 1
         next()
       })
@@ -159,5 +160,17 @@ Util.checkJWTToken = (req, res, next) => {
     next()
   }
 }
+
+/* ****************************************
+ *  Check Login
+ * ************************************ */
+Util.checkLogin = (req, res, next) => {
+  if (res.locals.loggedin) {
+    next()
+  } else {
+    req.flash("notice", "Please log in.")
+    return res.redirect("/account/login")
+  }
+ }
 
 module.exports = Util
