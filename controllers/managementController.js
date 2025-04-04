@@ -103,6 +103,34 @@ management.addNewInventory = async function (req, res) {
 }
 
 /* ***************************
+ *  Build the edit view
+ * ************************** */
+management.buildUpdate = async function (req, res) {
+  let nav = await utilities.getNav()
+  const inv_id = parseInt(req.params.inv_id);
+  const data = await invModel.getInventoryByInvId(inv_id);
+  const classificationSelect = await utilities.buildClassificationList(data[0].classification_id)
+  const itemName = `${data[0].inv_make} ${data[0].inv_model}`
+  res.render("./inventory/update-inventory", {
+    title: "Update " + itemName,
+    nav,
+    classificationSelect: classificationSelect,
+    inv_id: data[0].inv_id,
+    inv_make: data[0].inv_make,
+    inv_model: data[0].inv_model,
+    inv_year: data[0].inv_year,
+    inv_description: data[0].inv_description,
+    inv_image: data[0].inv_image,
+    inv_thumbnail: data[0].inv_thumbnail,
+    inv_price: data[0].inv_price,
+    inv_miles: data[0].inv_miles,
+    inv_color: data[0].inv_color,
+    classification_id: data[0].classification_id,
+    errors: null,
+  })
+}
+
+/* ***************************
  *  Build the delete view
  * ************************** */
 management.buildDelete = async function (req, res) {
