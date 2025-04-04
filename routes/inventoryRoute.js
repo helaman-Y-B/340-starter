@@ -58,13 +58,26 @@ router.get(
     utilities.handleErrors(invController.getInventoryJSON)
   )
 
+  // Route to build edit view
   router.get(
-    "/delete-confirm/:inv_id",
+    "/edit/:inv_id",
+    utilities.handleErrors(managementController.buildUpdate)
+  )
+
+  router.post(
+    "/update-inventory/",
+    regValidate.updateInventory(),
+    regValidate.checkUpdateData,
+    utilities.handleErrors(managementController.updateItem)
+  );
+
+  router.get(
+    "/delete/:inv_id",
     utilities.handleErrors(managementController.buildDelete)
   );
 
+  // Route to post and delete an item in the inventory
   router.post(
-    // Correct route - /delete-confirm/:inv_id
     "/delete-confirm/:inv_id",
     utilities.handleErrors(managementController.deleteItem)
   );

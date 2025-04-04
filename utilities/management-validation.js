@@ -136,4 +136,102 @@ validate.checkInventoryData = async (req, res, next) => {
     next()
 }
 
+/*  **********************************
+  *  Update Data Validation
+  * ********************************* */
+validate.updateInventory = () => {
+    return [
+        body("inv_make")
+            .trim()
+            .escape()
+            .notEmpty()
+            .isLength({ min: 1 })
+            .withMessage("Please provide the name of the brand.")
+            .matches(/^[a-zA-Z0-9]+$/)
+            .withMessage("The name of the brand cannot have spaces."),
+
+        body("inv_model")
+            .escape()
+            .notEmpty()
+            .isLength({ min: 1 })
+            .withMessage("Please provide the model of the vehicle.")
+            .matches(/^[a-zA-Z0-9]+$/)
+            .withMessage("The name of the brand cannot have spaces."),
+
+        body("inv_year")
+            .trim()
+            .escape()
+            .notEmpty()
+            .isLength({ min: 4 }) 
+            .matches(/^\d{4}$/)
+            .withMessage("Please provide the year of the vehicle."),
+
+        body("inv_description")
+            .notEmpty()
+            .withMessage("Please provide a breaf description of the vehicle."),
+
+        body("inv_image")
+            .trim()
+            .notEmpty()
+            .matches(/^\/images\/vehicles\/[a-zA-Z0-9_-]+\.(jpg|jpeg|png|gif)$/)
+            .withMessage("Please provide a path for the image in the following format: /images/vehicles/vehicle.jpg or .png"),
+
+        body("inv_thumbnail")
+            .trim()
+            .notEmpty() 
+            .matches(/^\/images\/vehicles\/[a-zA-Z0-9_-]+\.(jpg|jpeg|png|gif)$/)
+            .withMessage("Please provide a path for the thumbnail in the following format: /images/vehicles/vehicle.jpg or .png"),
+
+        body("inv_price")
+            .trim()
+            .escape()
+            .notEmpty()
+            .isLength({ min: 3 })
+            .matches(/^\d+$/)
+            .withMessage("Please provide a price as a whole number only"),
+
+        body("inv_miles")
+            .trim()
+            .escape()
+            .notEmpty()
+            .matches(/^\d+$/)
+            .withMessage("Please provide the miles as a whole number."),
+
+        body("inv_color")
+            .escape()
+            .notEmpty()
+            .matches(/^[a-zA-Z]+$/)
+            .withMessage("Please provide the color of the vehicle.")
+    ]
+}
+
+validate.checkUpdateData = async (req, res, next) => {
+    const { inv_id, inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id } = req.body
+    let optionsGrid = await utilities.buildClassificationList()
+    let errors = []
+    errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        let nav = await utilities.getNav()
+        res.render("inventory/edit", {
+            errors,
+            title: `Update ${inv_make} ${inv_model}`,
+            nav,
+            optionsGrid,
+            inv_make, 
+            inv_model, 
+            inv_year, 
+            inv_description, 
+            inv_image, 
+            inv_thumbnail, 
+            inv_price, 
+            inv_miles, 
+            inv_color, 
+            classification_id,
+            inv_id
+        })
+        return
+    }
+    next()
+}
+
 module.exports = validate;

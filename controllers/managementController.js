@@ -103,12 +103,79 @@ management.addNewInventory = async function (req, res) {
 }
 
 /* ***************************
+ *  Build the edit view
+ * ************************** */
+management.buildUpdate = async function (req, res) {
+  let nav = await utilities.getNav()
+  const inv_id = parseInt(req.params.inv_id);
+  const data = await invModel.getInventoryByInvId(inv_id);
+  const classificationSelect = await utilities.buildClassificationList(data[0].classification_id)
+  const itemName = `${data[0].inv_make} ${data[0].inv_model}`
+  res.render("./inventory/update-inventory", {
+    title: "Update " + itemName,
+    nav,
+    classificationSelect: classificationSelect,
+    inv_id: data[0].inv_id,
+    inv_make: data[0].inv_make,
+    inv_model: data[0].inv_model,
+    inv_year: data[0].inv_year,
+    inv_description: data[0].inv_description,
+    inv_image: data[0].inv_image,
+    inv_thumbnail: data[0].inv_thumbnail,
+    inv_price: data[0].inv_price,
+    inv_miles: data[0].inv_miles,
+    inv_color: data[0].inv_color,
+    classification_id: data[0].classification_id,
+    errors: null,
+  })
+}
+
+/* ***************************
+ *  Updates inventory item
+ * ************************** */
+management.updateItem = async function (req, res) {
+  let nav = await utilities.getNav()
+    const { inv_id, inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id } = req.body
+
+  const regResult = await invModel.updateInventory(
+    inv_id, inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id
+  )
+    
+  if (regResult) {
+    const itemName = regResult.inv_make + " " + regResult.inv_model
+    req.flash("notice", `The ${itemName} was successfully updated.`)
+    res.redirect("/inv/")
+  } else {
+    const classificationSelect = await utilities.buildClassificationList(classification_id)
+    const itemName = `${inv_make} ${inv_model}`
+    req.flash("notice", "Sorry, the insert failed.")
+    res.status(501).render("inventory/update-inventory", {
+    title: "Update " + itemName,
+    nav,
+    classificationSelect: classificationSelect,
+    inv_id,
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+    classification_id,
+    errors: null
+    })
+  }
+}
+
+/* ***************************
  *  Build the delete view
  * ************************** */
 management.buildDelete = async function (req, res) {
   let nav = await utilities.getNav()
   const inv_id = req.params.inv_id;
-  const data = await utilities.getInventoryByInvId(inv_id)
+  const data = await invModel.getInventoryByInvId(inv_id)
   const inv_make = data[0].inv_make;
   const inv_model = data[0].inv_model;
   const inv_price = data[0].inv_price;
@@ -137,6 +204,7 @@ management.deleteItem = async function (req, res) {
     req.flash(
       "notice", "Deletion successful."
     )
+    res.redirect("/inv/")
   } else {
     req.flash(
       "notice", "Deletion was not successful."

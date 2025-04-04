@@ -1,0 +1,65 @@
+<% if (title) { %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% if (errors) { %>
+        <ul class="notice">
+            <% errors.array().forEach(error=> { %>
+                <li>
+                    <%= error.msg %>
+                </li>
+                <% }) %>
+        </ul>
+        <% } %>
+            <%- messages() %>
+                <% } else { res.redirect('/') } %>
+                    <div id="update-item">
+                        <form id="updateForm" action="/inv/update-inventory" method="post">
+                            <fieldset id="classification-dropdown">
+                                <%- classificationSelect %>
+                            </fieldset>
+                            <fieldset>
+                                <legend>UPDATE THE PRODUCER</legend>
+                                <!-- The "for" and "name" needs to be the same name as in the database -->
+                                <label for="inv_make">UPDATE THE BRAND OF THE VEHICLE</label>
+                                <input type="text" name="inv_make" id="inv_make" pattern="^[a-zA-Z0-9]+$"
+                                    value="<%= inv_make %>">
+                                <label for="inv_model">UPDATE THE MODEL OF THE VEHICLE</label>
+                                <input type="text" name="inv_model" id="inv_model" pattern="^[a-zA-Z0-9]+$"
+                                    value="<%= inv_model %>">
+                                <label for="inv_year">UPDATE THE YEAR OF THE VEHICLE</label>
+                                <input type="text" name="inv_year" id="inv_year" pattern="^\d{4}$"
+                                    value="<%= inv_year %>">
+                            </fieldset>
+                            <fieldset>
+                                <legend>UPDATE DESCRIPTION AND IMAGE</legend>
+                                <!-- The "for" and "name" needs to be the same name as in the database -->
+                                <label for="inv_description">UPDATE A DESCRIPTION</label>
+                                <input type="text" name="inv_description" id="inv_description"
+                                    value="<%= inv_description %>">
+                                <label for="inv_image">UPDATE A IMAGE</label>
+                                <input type="text" name="inv_image" id="inv_image" value="<%= inv_image %>"
+                                    pattern="^\/images\/vehicles\/[a-zA-Z0-9_-]+\.(jpg|jpeg|png|gif)$">
+                                <label for="inv_thumbnail">UPDATE A THUMBNAIL</label>
+                                <input type="text" name="inv_thumbnail" id="inv_thumbnail" value="<%= inv_thumbnail %>"
+                                    pattern="^\/images\/vehicles\/[a-zA-Z0-9_-]+\.(jpg|jpeg|png|gif)$">
+                            </fieldset>
+                            <fieldset>
+                                <legend>PRICE, MILES AND COLOR</legend>
+                                <!-- The "for" and "name" needs to be the same name as in the database -->
+                                <label for="inv_price">UPDATE THE PRICE OF THE VEHICLE</label>
+                                <input type="text" name="inv_price" id="inv_price" pattern="^\d+$"
+                                    value="<%= inv_price %>">
+                                <label for="inv_miles">UPDATE THE RUNNED MILES OF THE VEHICLE</label>
+                                <input type="number" name="inv_miles" id="inv_miles" value="<%= inv_miles %>">
+                                <label for="inv_color">UPDATE THE COLOR OF THE VEHICLE</label>
+                                <input type="text" name="inv_color" id="inv_color" pattern="^[a-zA-Z]+$"
+                                    value="<%= inv_color %>">
+                            </fieldset>
+                            <button class="submit-button" id="update-inventory-button" type="submit" disabled>Update
+                                inventory
+                                item</button>
+                            <input type="hidden" name="inv_id" <% if (locals.inv_id) { %> value="<%= inv_id %>" <% } %>>
+                        </form>
+                    </div>
+                    <script src="/js/inv-update.js"></script>
