@@ -64,10 +64,11 @@ router.get(
     utilities.handleErrors(managementController.buildUpdate)
   )
 
-  // Route to build delete item view
-  router.get(
-    "/delete-confirm/:inv_id",
-    utilities.handleErrors(managementController.buildDelete)
+  router.post(
+    "/update-inventory/",
+    regValidate.updateInventory(),
+    regValidate.checkUpdateData,
+    utilities.handleErrors(managementController.updateItem)
   );
 
   // Route to post and delete an item in the inventory

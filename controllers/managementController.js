@@ -131,6 +131,45 @@ management.buildUpdate = async function (req, res) {
 }
 
 /* ***************************
+ *  Updates inventory item
+ * ************************** */
+management.updateItem = async function (req, res) {
+  let nav = await utilities.getNav()
+    const { inv_id, inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id } = req.body
+
+  const regResult = await invModel.updateInventory(
+    inv_id, inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id
+  )
+    
+  if (regResult) {
+    const itemName = regResult.inv_make + " " + regResult.inv_model
+    req.flash("notice", `The ${itemName} was successfully updated.`)
+    res.redirect("/inv/")
+  } else {
+    const classificationSelect = await utilities.buildClassificationList(classification_id)
+    const itemName = `${inv_make} ${inv_model}`
+    req.flash("notice", "Sorry, the insert failed.")
+    res.status(501).render("inventory/update-inventory", {
+    title: "Update " + itemName,
+    nav,
+    classificationSelect: classificationSelect,
+    inv_id,
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+    classification_id,
+    errors: null
+    })
+  }
+}
+
+/* ***************************
  *  Build the delete view
  * ************************** */
 management.buildDelete = async function (req, res) {
