@@ -78,8 +78,7 @@ async function buildLogged(req, res) {
   )
   res.render("account/logged", {
       title: "You're logged in!",
-      nav,
-      loggedin: res.locals.loggedin, 
+      nav, 
       accountData: res.locals.accountData, 
       errors: null
   })
