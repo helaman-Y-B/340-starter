@@ -101,7 +101,9 @@ validate.checkClassificationData = async (req, res, next) => {
             errors,
             title: "Add New Classification",
             nav,
-            classification_name
+            classification_name,
+            loggedin: res.locals.loggedin, 
+            accountData: res.locals.accountData,
         })
         return
     }
@@ -129,7 +131,9 @@ validate.checkInventoryData = async (req, res, next) => {
             inv_price, 
             inv_miles, 
             inv_color, 
-            classification_id
+            classification_id,
+            loggedin: res.locals.loggedin, 
+            accountData: res.locals.accountData,
         })
         return
     }
@@ -227,7 +231,9 @@ validate.checkUpdateData = async (req, res, next) => {
             inv_miles, 
             inv_color, 
             classification_id,
-            inv_id
+            inv_id,
+            loggedin: res.locals.loggedin, 
+            accountData: res.locals.accountData,
         })
         return
     }

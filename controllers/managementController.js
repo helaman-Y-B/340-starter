@@ -14,6 +14,8 @@ management.buildManagement = async function (req, res) {
         title: "Management page",
         nav,
         classificationList,
+        loggedin: res.locals.loggedin, 
+        accountData: res.locals.accountData, 
         errors: null,
     })
 }
@@ -48,6 +50,8 @@ management.addNewClassification = async function (req, res) {
           res.status(201).render("./inventory/management", {
             title: "Management page",
             nav,
+            loggedin: res.locals.loggedin, 
+            accountData: res.locals.accountData, 
             errors: null,
           })
         } else {
@@ -55,6 +59,8 @@ management.addNewClassification = async function (req, res) {
           res.status(501).render("./inventory/add-classification", {
             title: "Add New Classification",
             nav,
+            loggedin: res.locals.loggedin, 
+            accountData: res.locals.accountData, 
             errors: null,
           })
         }
@@ -67,6 +73,8 @@ management.buildAddInventory = async function (req, res) {
     title: "Add new inventory item",
     nav,
     optionsGrid,
+    loggedin: res.locals.loggedin, 
+    accountData: res.locals.accountData, 
     errors: null,
   })
 }
@@ -89,6 +97,8 @@ management.addNewInventory = async function (req, res) {
       res.status(201).render("./inventory/management", {
         title: "Management page",
         nav,
+        loggedin: res.locals.loggedin, 
+        accountData: res.locals.accountData, 
         errors: null,
       })
     } else {
@@ -97,6 +107,8 @@ management.addNewInventory = async function (req, res) {
         title: "Add new inventory item",
         nav,
         optionsGrid,
+        loggedin: res.locals.loggedin, 
+        accountData: res.locals.accountData,
         errors: null,
       })
     }
@@ -126,6 +138,8 @@ management.buildUpdate = async function (req, res) {
     inv_miles: data[0].inv_miles,
     inv_color: data[0].inv_color,
     classification_id: data[0].classification_id,
+    loggedin: res.locals.loggedin, 
+    accountData: res.locals.accountData, 
     errors: null,
   })
 }
@@ -164,6 +178,8 @@ management.updateItem = async function (req, res) {
     inv_miles,
     inv_color,
     classification_id,
+    loggedin: res.locals.loggedin, 
+    accountData: res.locals.accountData, 
     errors: null
     })
   }
@@ -189,6 +205,8 @@ management.buildDelete = async function (req, res) {
     inv_price,
     inv_year,
     inv_id,
+    loggedin: res.locals.loggedin, 
+    accountData: res.locals.accountData, 
     errors: null,
   })
 }
@@ -212,6 +230,8 @@ management.deleteItem = async function (req, res) {
     res.redirect(`./inventory/delete-confirm/:${inv_id}`, {
       title: "Select an item to delete",
       nav,
+      loggedin: res.locals.loggedin, 
+      accountData: res.locals.accountData, 
       errors: null,
     })
   }

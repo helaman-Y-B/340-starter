@@ -98,6 +98,8 @@ validate.checkLogData = async (req, res, next) => {
         nav,
         account_email,
         account_password,
+        loggedin: res.locals.loggedin, 
+        accountData: res.locals.accountData,
       })
       return
     }
@@ -120,6 +122,8 @@ validate.checkRegData = async (req, res, next) => {
         account_firstname,
         account_lastname,
         account_email,
+        loggedin: res.locals.loggedin, 
+        accountData: res.locals.accountData,
       })
       return
     }

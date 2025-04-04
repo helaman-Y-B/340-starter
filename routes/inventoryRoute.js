@@ -21,12 +21,14 @@ router.get(
   // Route to build management view
   router.get(
       "/",
+      utilities.checkLogin,
       utilities.handleErrors(managementController.buildManagement)
   );
 
   // Route to build add-classification view
   router.get(
     "/add-classification",
+    utilities.checkLogin,
     utilities.handleErrors(managementController.buildAddClassification)
   );
 
@@ -41,6 +43,7 @@ router.get(
   // Route to build add-inventory view
   router.get(
     "/add-inventory",
+    utilities.checkLogin,
     utilities.handleErrors(managementController.buildAddInventory)
   );
 
@@ -55,14 +58,16 @@ router.get(
   // Route to build add-classification view
   router.get(
     "/getInventory/:classification_id",
+    utilities.checkLogin,
     utilities.handleErrors(invController.getInventoryJSON)
   )
 
   // Route to build edit view
   router.get(
     "/edit/:inv_id",
+    utilities.checkLogin,
     utilities.handleErrors(managementController.buildUpdate)
-  )
+  );
 
   router.post(
     "/update-inventory/",
@@ -71,8 +76,10 @@ router.get(
     utilities.handleErrors(managementController.updateItem)
   );
 
+  // Route to delete view
   router.get(
     "/delete/:inv_id",
+    utilities.checkLogin,
     utilities.handleErrors(managementController.buildDelete)
   );
 
