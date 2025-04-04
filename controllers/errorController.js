@@ -13,6 +13,8 @@ errorCont.buildError500 = async function (req, res, next) {
     res.status(500).render("errors/error", {
         title: "Error 500",
         nav,
+        loggedin: res.locals.loggedin, 
+        accountData: res.locals.accountData, 
         message: "Internal Server Error",
     })
 }

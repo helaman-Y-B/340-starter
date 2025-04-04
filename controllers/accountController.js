@@ -11,7 +11,9 @@ async function buildAccount(req, res, next) {
     let nav = await utilities.getNav()
     res.render("account/login", {
         title: "Login",
-        nav
+        nav,
+        loggedin: res.locals.loggedin, 
+        accountData: res.locals.accountData,
     })
 }
 
@@ -31,6 +33,8 @@ async function accountLogin(req, res) {
       nav,
       account_email,
       account_password,
+      loggedin: res.locals.loggedin, 
+      accountData: res.locals.accountData,
       errors: null,
     })
   }
@@ -51,6 +55,8 @@ async function accountLogin(req, res) {
         title: "Login",
         nav,
         account_email,
+        loggedin: res.locals.loggedin, 
+        accountData: res.locals.accountData,
         errors: null,
       })
     }
@@ -73,8 +79,19 @@ async function buildLogged(req, res) {
   res.render("account/logged", {
       title: "You're logged in!",
       nav,
+      loggedin: res.locals.loggedin, 
+      accountData: res.locals.accountData, 
       errors: null
   })
+}
+
+/* ****************************************
+ *  Process logout view
+ * ************************************ */
+async function accountLogout(req, res) {
+    req.flash("notice", "You have been logged out.")
+    res.clearCookie("jwt")
+    return res.redirect("/account/login")
 }
 
 /* ****************************************
@@ -85,6 +102,8 @@ async function buildRegistration(req, res, next) {
     res.render("account/registration", {
         title: "Register",
         nav,
+        loggedin: res.locals.loggedin, 
+        accountData: res.locals.accountData, 
         errors: null
     })
 }
@@ -111,15 +130,19 @@ async function registerAccount(req, res) {
       res.status(201).render("account/login", {
         title: "Login",
         nav,
+        loggedin: res.locals.loggedin, 
+        accountData: res.locals.accountData,
       })
     } else {
       req.flash("notice", "Sorry, the registration failed.")
       res.status(501).render("account/registration", {
         title: "Registration",
         nav,
+        loggedin: res.locals.loggedin, 
+        accountData: res.locals.accountData,
       })
     }
   }
 
 
-module.exports = { buildAccount, accountLogin, buildLogged, buildRegistration, registerAccount };
+module.exports = { buildAccount, accountLogin, buildLogged, accountLogout, buildRegistration, registerAccount };
