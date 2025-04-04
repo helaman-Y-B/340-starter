@@ -175,7 +175,7 @@ management.updateItem = async function (req, res) {
 management.buildDelete = async function (req, res) {
   let nav = await utilities.getNav()
   const inv_id = req.params.inv_id;
-  const data = await utilities.getInventoryByInvId(inv_id)
+  const data = await invModel.getInventoryByInvId(inv_id)
   const inv_make = data[0].inv_make;
   const inv_model = data[0].inv_model;
   const inv_price = data[0].inv_price;
@@ -204,6 +204,7 @@ management.deleteItem = async function (req, res) {
     req.flash(
       "notice", "Deletion successful."
     )
+    res.redirect("/inv/")
   } else {
     req.flash(
       "notice", "Deletion was not successful."

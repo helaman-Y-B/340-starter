@@ -71,9 +71,13 @@ router.get(
     utilities.handleErrors(managementController.updateItem)
   );
 
+  router.get(
+    "/delete/:inv_id",
+    utilities.handleErrors(managementController.buildDelete)
+  );
+
   // Route to post and delete an item in the inventory
   router.post(
-    // Correct route - /delete-confirm/:inv_id
     "/delete-confirm/:inv_id",
     utilities.handleErrors(managementController.deleteItem)
   );

@@ -137,7 +137,7 @@ validate.checkInventoryData = async (req, res, next) => {
 }
 
 /*  **********************************
-  *  Update Data Validation Rules
+  *  Update Data Validation
   * ********************************* */
 validate.updateInventory = () => {
     return [
