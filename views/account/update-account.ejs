@@ -31,13 +31,15 @@
                                     <input pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" type="email"
                                         id="email" name="account_email" value="<%= accountData.account_email %>">
                                 </div>
+                                <input type="text" id="account_id" name="account_id"
+                                    value="<%= accountData.account_id %>" hidden>
                                 <button class="submit-button" id="update-button" type="submit">Update
                                     information</button>
                             </fieldset>
                         </form>
                         <form id="update-password" action="/account/update-password" method="post">
                             <fieldset>
-                                <h3>Update Password</h3>
+                                <h2>Update Password</h2>
                                 <p id="password-requirements">Password must be minimum of 12 characters and include
                                     1
                                     capital
@@ -47,6 +49,8 @@
                                     <input pattern="(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*.\-_=+]).{12,}" type="password"
                                         id="account_password" name="account_password" placeholder="Update password">
                                 </div>
+                                <input type="text" id="account_id" name="account_id"
+                                    value="<%= accountData.account_id %>" hidden>
                                 <button id="show-password" type="button">Show Password</button>
                                 <button class="submit-button" id="update-password-button" type="submit">Update
                                     Password</button>
