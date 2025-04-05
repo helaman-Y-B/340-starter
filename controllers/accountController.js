@@ -70,12 +70,6 @@ async function accountLogin(req, res) {
  * ************************************ */
 async function buildLogged(req, res) {
   let nav = await utilities.getNav()
-  //const { account_email } = req.body
-  //const data = await accountModel.getAccountByEmail(account_email)
-  req.flash(
-    "notice",
-    `Welcome citizen!`
-  )
   res.render("account/logged", {
       title: "You're logged in!",
       nav, 
@@ -117,6 +111,8 @@ async function updateAccount(req, res) {
       "notice",
       `Congratulations, you\'re updated ${account_firstname}. Please sign in.`
     )
+    res.clearCookie("jwt")
+    res.locals.loggedin = 0
     res.status(201).render("account/login", {
       title: "Login",
       nav,
@@ -148,6 +144,8 @@ async function updatePassword(req, res) {
     )
     if (updateResult) {
       req.flash("notice", "Password updated successfully. Please sign in.")
+      res.clearCookie("jwt")
+      res.locals.loggedin = 0
       res.status(201).redirect("/account/login")
     }
     else {
