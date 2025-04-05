@@ -167,7 +167,7 @@ async function updatePassword(req, res) {
 async function accountLogout(req, res) {
     req.flash("notice", "You have been logged out.")
     res.clearCookie("jwt")
-    return res.redirect("/account/login")
+    return res.redirect("/")
 }
 
 /* ****************************************

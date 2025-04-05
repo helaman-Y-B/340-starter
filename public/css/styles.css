@@ -40,15 +40,23 @@ footer {
   justify-content: center;
 }
 
+#car-container {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  position: relative; 
+}
+
 #main-car {
-  width: 80vw;
-  margin: auto;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 #propaganda {
   background-color: rgb(233, 216, 194);
   padding: 10px;
-  width: 80vw;
+  width: 100%;
   margin: auto;
 }
 
@@ -142,6 +150,7 @@ footer {
   font-family: "Inter", sans-serif;
   color: rgb(56, 56, 56);
   text-align: right;
+  margin-right: 10px;
 }
 
 /* navigation bar */
@@ -445,8 +454,6 @@ legend {
   color: rgb(255, 0, 0);
 }
 
-/* Update info page */
-
 /* medias */
 
 @media (min-width: 565px) {
@@ -503,15 +510,18 @@ legend {
     max-width: 500px;
     margin: auto;
   }
-
-  /* Propaganda div */
-
+  
   #propaganda {
+    text-align: center;
+    margin-top: 10px; 
+    background-color: rgb(233, 216, 194);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     opacity: 0.8;
     max-width: 200px;
     position: absolute;
-    top: 115px;
-    left: 70px;
+    left: 15vw;
   }
   
   #propaganda h3 {
@@ -619,8 +629,7 @@ legend {
   }
 
   #propaganda {
-    top: 115px;
-    left: 100px;
+    left: 150px;
   }
 
   #up-reviews {
