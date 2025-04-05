@@ -85,6 +85,20 @@ async function buildLogged(req, res) {
 }
 
 /* ****************************************
+ *  Process update account view
+ * ************************************ */
+async function buildUpdateAccount(req, res) {
+  let nav = await utilities.getNav()
+  res.render("account/update-account", {
+    title: "Update Account",
+    nav,
+    loggedin: res.locals.loggedin, 
+    accountData: res.locals.accountData, 
+    errors: null
+  })
+}
+
+/* ****************************************
  *  Process logout view
  * ************************************ */
 async function accountLogout(req, res) {
@@ -144,4 +158,4 @@ async function registerAccount(req, res) {
   }
 
 
-module.exports = { buildAccount, accountLogin, buildLogged, accountLogout, buildRegistration, registerAccount };
+module.exports = { buildAccount, accountLogin, buildLogged, buildUpdateAccount, accountLogout, buildRegistration, registerAccount };

@@ -1,0 +1,56 @@
+<% if (title) { %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% if (errors) { %>
+        <ul class="notice">
+            <% errors.array().forEach(error=> { %>
+                <li>
+                    <%= error.msg %>
+                </li>
+                <% }) %>
+        </ul>
+        <% } %>
+            <%- messages() %>
+                <% } else { res.redirect('/') } %>
+                    <div id="update-account">
+                        <form id="update-info" action="/account/update-account" method="post">
+                            <fieldset>
+                                <div class="form-group" id="fname-form">
+                                    <label for="account_firstname">First Name:</label>
+                                    <input pattern="^[A-Za-zÀ-ÖØ-öø-ÿ\s'-]+$" type="text" id="fname"
+                                        name="account_firstname" value="<%= accountData.account_firstname %>">
+                                </div>
+                                <div class="form-group" id="lname-form">
+                                    <label for="account_lastname">Last Name:</label>
+                                    <input pattern="^[A-Za-zÀ-ÖØ-öø-ÿ\s'-]+$" type="text" id="lname"
+                                        name="account_lastname" value="<%= accountData.account_lastname %>">
+                                </div>
+                                <div class="form-group" id="email-form">
+                                    <label for="account_email">Email:</label>
+                                    <input pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" type="email"
+                                        id="email" name="account_email" value="<%= accountData.account_email %>">
+                                </div>
+                                <button class="submit-button" id="update-button" type="submit">Update
+                                    information</button>
+                            </fieldset>
+                        </form>
+                        <form id="update-password" action="/account/update-password" method="post">
+                            <fieldset>
+                                <h3>Update Password</h3>
+                                <p id="password-requirements">Password must be minimum of 12 characters and include
+                                    1
+                                    capital
+                                    letter, 1 number and 1 special character.</p>
+                                <div class="form-group" id="password-form">
+                                    <label for="account_password">Update Password:</label>
+                                    <input pattern="(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*.\-_=+]).{12,}" type="password"
+                                        id="account_password" name="account_password" placeholder="Update password">
+                                </div>
+                                <button id="show-password" type="button">Show Password</button>
+                                <button class="submit-button" id="update-password-button" type="submit">Update
+                                    Password</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <script src="/js/inv-update.js"></script>

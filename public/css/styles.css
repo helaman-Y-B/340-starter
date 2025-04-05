@@ -445,6 +445,8 @@ legend {
   color: rgb(255, 0, 0);
 }
 
+/* Update info page */
+
 /* medias */
 
 @media (min-width: 565px) {
@@ -592,6 +594,11 @@ legend {
   #show-password {
     margin: 0px;
     margin-bottom: 10px;
+  }
+
+  #update-password button {
+    margin: 0px;
+    margin-top: 10px;
   }
 
   /* Registration page */

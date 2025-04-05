@@ -57,6 +57,13 @@ router.get(
   utilities.handleErrors(accountController.buildLogged)
 );
 
+// Route to build update-account view
+router.get(
+  "/update-account",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.buildUpdateAccount)
+)
+
 // Route to build the login view
 router.get(
   "/login",
