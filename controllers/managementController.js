@@ -47,9 +47,11 @@ management.addNewClassification = async function (req, res) {
             "notice",
             `Added ${classification_name}, successfully!`
           )
+          const classificationList = await utilities.buildClassificationList()
           res.status(201).render("./inventory/management", {
             title: "Management page",
             nav,
+            classificationList,
             loggedin: res.locals.loggedin, 
             accountData: res.locals.accountData, 
             errors: null,
@@ -94,9 +96,11 @@ management.addNewInventory = async function (req, res) {
         "notice",
         "Added the new inventory item, successfully!"
       )
+      const classificationList = await utilities.buildClassificationList()
       res.status(201).render("./inventory/management", {
         title: "Management page",
         nav,
+        classificationList,
         loggedin: res.locals.loggedin, 
         accountData: res.locals.accountData, 
         errors: null,

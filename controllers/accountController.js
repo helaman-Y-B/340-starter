@@ -70,20 +70,96 @@ async function accountLogin(req, res) {
  * ************************************ */
 async function buildLogged(req, res) {
   let nav = await utilities.getNav()
-  //const { account_email } = req.body
-  //const data = await accountModel.getAccountByEmail(account_email)
-  req.flash(
-    "notice",
-    `Welcome citizen!`
-  )
   res.render("account/logged", {
       title: "You're logged in!",
-      nav,
-      loggedin: res.locals.loggedin, 
+      nav, 
       accountData: res.locals.accountData, 
       errors: null
   })
 }
+
+  /* ****************************************
+  *  Process update account view
+  * ************************************ */
+async function buildUpdateAccount(req, res) {
+  let nav = await utilities.getNav()
+  res.render("account/update-account", {
+    title: "Update Account",
+    nav,
+    loggedin: res.locals.loggedin, 
+    accountData: res.locals.accountData, 
+    errors: null
+  })
+}
+
+/* ****************************************
+ *  Process update account request
+ * ************************************ */
+async function updateAccount(req, res) {
+  let nav = await utilities.getNav()
+  const { account_firstname, account_lastname, account_email, account_id } = req.body
+
+  const updateResult = await accountModel.updateAccount(
+    account_firstname,
+    account_lastname,
+    account_email,
+    parseInt(account_id)
+  )
+
+  if (updateResult) {
+    req.flash(
+      "notice",
+      `Congratulations, you\'re updated ${account_firstname}. Please sign in.`
+    )
+    res.clearCookie("jwt")
+    res.locals.loggedin = 0
+    res.status(201).render("account/login", {
+      title: "Login",
+      nav,
+      loggedin: res.locals.loggedin, 
+      accountData: res.locals.accountData,
+      errors: null,
+    })
+  } else {
+    req.flash("notice", "Sorry, the update failed.")
+    res.status(501).render("account/update-account", {
+      title: "Update Account",
+      nav,
+      loggedin: res.locals.loggedin, 
+      accountData: res.locals.accountData,
+      errors: null,
+    })
+  }
+}
+
+/* ****************************************
+ *  Process update password account request
+ * ************************************ */
+async function updatePassword(req, res) {
+    const { account_password, account_id } = req.body
+    const hashedPassword = await bcrypt.hash(account_password, 10)
+    const updateResult = await accountModel.updateAccountPassword(
+      hashedPassword,
+      parseInt(account_id)
+    )
+    if (updateResult) {
+      req.flash("notice", "Password updated successfully. Please sign in.")
+      res.clearCookie("jwt")
+      res.locals.loggedin = 0
+      res.status(201).redirect("/account/login")
+    }
+    else {
+      req.flash("notice", "Sorry, the update failed.")
+      res.status(501).render("account/update-account", {
+        title: "Update Account",
+        nav,
+        loggedin: res.locals.loggedin, 
+        accountData: res.locals.accountData,
+        errors: null,
+      })
+    }
+}
+
 
 /* ****************************************
  *  Process logout view
@@ -91,7 +167,7 @@ async function buildLogged(req, res) {
 async function accountLogout(req, res) {
     req.flash("notice", "You have been logged out.")
     res.clearCookie("jwt")
-    return res.redirect("/account/login")
+    return res.redirect("/")
 }
 
 /* ****************************************
@@ -145,4 +221,4 @@ async function registerAccount(req, res) {
   }
 
 
-module.exports = { buildAccount, accountLogin, buildLogged, accountLogout, buildRegistration, registerAccount };
+module.exports = { buildAccount, accountLogin, buildLogged, buildUpdateAccount, updateAccount, updatePassword, accountLogout, buildRegistration, registerAccount };
