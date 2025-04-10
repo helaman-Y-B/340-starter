@@ -83,6 +83,23 @@ Util.buildVehicleGrid = async function(data) {
   return grid
 }
 
+Util.buildVehicleGridForm = async function(data) {
+  let grid
+  if(data.length > 0){
+    grid = '<div id="vehicle-img">'
+    grid += '<img src="' + data[0].inv_image + '" alt="Image of ' + data[0].inv_model + '" />'
+    grid += '</div>'
+    grid += '<div class="form-group">'
+    grid += '<h2>' + data[0].inv_make + ' ' + data[0].inv_model + '</h2>'
+    grid += '<h3>Price: $' + new Intl.NumberFormat('en-US').format(data[0].inv_price) + '</h3>'
+    grid += '<p><b>Color</b>: ' + data[0].inv_color + '</p>'
+    grid += '<p><b>Miles</b>: ' + data[0].inv_miles + '</p>'
+    grid += '<p><b>Year</b>: ' + data[0].inv_year + '</p>'
+    grid += '</div>'
+  }
+  return grid
+}
+
 /* **************************************
   * Build the classification dropdow to the add-inventory view
   * ************************************ */

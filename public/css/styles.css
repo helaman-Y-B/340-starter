@@ -286,6 +286,16 @@ span {
   border-radius: 100%;
 }
 
+#vehicle-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  max-width: 400px;
+  width: 80vw;
+}
+
 /* Login page */
 
 #login-title {
@@ -576,6 +586,11 @@ legend {
     max-width: 370px;
     width: 200vw;
     margin: auto;
+  }
+
+  #vehicle-form .form-group {
+    display: flex;
+    flex-direction: column;
   }
 
   /* Login page */
