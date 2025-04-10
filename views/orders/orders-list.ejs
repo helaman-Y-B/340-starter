@@ -1,0 +1,31 @@
+<% if (title) { %>
+    <h1 id="order-title">
+        <%= title %>
+    </h1>
+    <%- messages() %>
+        <% } else { res.redirect('/') } %>
+            <% if (accountData.account_type==="Admin" || accountData.account_type==="Employee" ) { %>
+                <div id="orders-list"></div>
+                <% orders.forEach(order=> {
+
+                    // Process each element here
+                    <div class="order">
+                        <h2>
+                            <%= order.personName %>
+                        </h2>
+                        <p>
+                            <%= order.orderDescription %>
+                        </p>
+                        <p>
+                            <%= order.orderDate %>
+                        </p>
+                        <p>
+                            <%= order.orderDate %>
+                        </p>
+                        <p>
+                            <%= order.orderStatus %>
+                        </p>
+                    </div>
+                    }); %>
+                    </div>
+                    <% } else { res.redirect('/') } %>
