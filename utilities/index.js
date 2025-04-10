@@ -75,6 +75,7 @@ Util.buildVehicleGrid = async function(data) {
     grid += '<p><b>Color</b>: ' + data[0].inv_color + '</p>'
     grid += '<p><b>Miles</b>: ' + data[0].inv_miles + '</p>'
     grid += '<p><b>Year</b>: ' + data[0].inv_year + '</p>'
+    grid += '<a href="/orders/buy-form/' + data[0].inv_id + '"><button class="buy-button">Buy Now</button></a>'
     grid += '</div>'
   } else {
     grid = '<p class="notice">Sorry, no vehicle details available.</p>'
