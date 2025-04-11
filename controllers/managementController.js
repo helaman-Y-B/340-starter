@@ -10,14 +10,20 @@ const management = {}
 management.buildManagement = async function (req, res) {
     let nav = await utilities.getNav()
     const classificationList = await utilities.buildClassificationList()
-    res.render("./inventory/management", {
+    const accountData = res.locals.accountData
+
+    if (accountData.account_type !== "Admin" && accountData.account_type !== "Employee") {
+      return res.redirect('/');
+    } else {
+      res.render("./inventory/management", {
         title: "Management page",
         nav,
         classificationList,
         loggedin: res.locals.loggedin, 
-        accountData: res.locals.accountData, 
+        accountData,
         errors: null,
     })
+    }
 }
 
 /* ***************************
