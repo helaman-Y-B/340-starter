@@ -4,28 +4,28 @@
     </h1>
     <%- messages() %>
         <% } else { res.redirect('/') } %>
-            <% if (accountData.account_type==="Admin" || accountData.account_type==="Employee" ) { %>
-                <div id="orders-list"></div>
-                <% orders.forEach(order=> {
+            <% if (accountData.account_type === "Admin" || accountData.account_type === "Employee") { %>
+                <div id="orders-list">
+                    <% orders.forEach(order => { %>
 
-                    // Process each element here
-                    <div class="order">
-                        <h2>
-                            <%= order.personName %>
-                        </h2>
-                        <p>
-                            <%= order.orderDescription %>
-                        </p>
-                        <p>
-                            <%= order.orderDate %>
-                        </p>
-                        <p>
-                            <%= order.orderDate %>
-                        </p>
-                        <p>
-                            <%= order.orderStatus %>
-                        </p>
-                    </div>
-                    }); %>
-                    </div>
+                        // Process each element here
+                        <div class="order">
+                            <h2>
+                                Nro: <%= order.order_id %>
+                            </h2>
+                            <p>
+                               From: <%= order.account_id %>
+                            </p>
+                            <p>
+                                <%= order.order_date %>
+                            </p>
+                            <p>
+                                <%= order.inv_id %>
+                            </p>
+                            <p>
+                                <%= order.order_status %>
+                            </p>
+                        </div>
+                    <% }); %>
+                </div>
                     <% } else { res.redirect('/') } %>

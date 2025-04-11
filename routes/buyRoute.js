@@ -10,10 +10,16 @@ router.get(
     utilities.handleErrors(orderController.buildBuyForm)
 )
 
-//router.get(
-//    "/order-list",
-//    utilities.checkLogin,
-//    utilities.handleErrors(orderController.buildOrderList)
-//)
+router.get(
+   "/orders-list",
+    utilities.checkLogin,
+    utilities.handleErrors(orderController.buildOrderList)
+)
+
+router.post(
+    "/buy-form/:inv_id",
+    utilities.checkLogin,
+    utilities.handleErrors(orderController.sendOrder)
+)
 
 module.exports = router;

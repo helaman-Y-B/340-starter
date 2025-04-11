@@ -5,7 +5,7 @@
     <%- messages() %>
         <% } else { res.redirect('/') } %>
         <% if (accountData) { %> 
-            <form id="buy-form" action="/orders/buy-form" method="post">
+            <form id="buy-form" action="/orders/buy-form/<%= inv_id %>" method="post">
                 <fieldset id="vehicle-form">
                     <legend>Vehicle</legend>
                     <%- vehicleGrid %>
@@ -26,7 +26,8 @@
                         <input pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" type="email" id="account_email"
                             name="account_email" readonly value="<%= accountData.account_email %>" required>
                     </div>
-                    <button class="submit-button" type="submit">BUY!</button>
+                    <input type="text" id="account_id" name="account_id" value="<%= accountData.account_id %>" hidden>
+                    <a href="/orders/orders-list"><button class="submit-button" type="submit">BUY!</button></a>
                 </fieldset>
             </form>
         <% } else { res.redirect('/account/login') } %>
