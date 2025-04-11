@@ -22,7 +22,15 @@ async function addOrder(order, inv_id, date) {
 async function getAllOrders() {
     try {
         const data = await pool.query(
-            `SELECT * FROM public.orders`,
+            `SELECT 
+            orders.order_id AS order_id,
+            orders.order_date AS order_date,
+            orders.order_status AS order_status,
+            account.account_firstname || ' ' || account.account_lastname AS account_fullname,
+            inventory.inv_make || ' ' || inventory.inv_model AS car_name
+            FROM public.orders
+            JOIN public.account ON orders.account_id = account.account_id
+            JOIN public.inventory ON orders.inv_id = inventory.inv_id`,
         )
         return data.rows;
     } catch (error) {

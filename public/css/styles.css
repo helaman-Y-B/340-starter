@@ -493,6 +493,9 @@ legend {
   border-radius: 5px;
   border-color: rgb(0, 162, 255);
   background-color: rgb(181, 228, 255);
+  width: 50vw;
+  max-width: 640px;
+  margin: 10px;
 }
 
 .order p {
@@ -665,9 +668,13 @@ legend {
   .order {
     display: flex;
     flex-direction: row;
-    max-width: fit-content;
+    width: 90vw;
     margin: 10px;
     text-align: center;
+  }
+
+  .order p {
+    margin: 0px 10px;
   }
 }
 
