@@ -12,16 +12,16 @@
                                Order Nro: <%= order.order_id %>
                             </h2>
                             <p>
-                               From User Nro: <%= order.account_id %>
+                               From User: <br><%= order.account_fullname %>
                             </p>
                             <p>
-                                Order Date: <%= new Date(order.order_date).toLocaleDateString("en-US") %>
+                                Order Date: <br><%= new Date(order.order_date).toLocaleDateString("en-US") %>
                             </p>
                             <p>
-                                Car Identification Nro: <%= order.inv_id %>
+                                Car: <br><%= order.car_name %>
                             </p>
                             <p>
-                               Order Status: <%= order.order_status %>
+                               Order Status: <br><%= order.order_status %>
                             </p>
                         </div>
                     <% }); %>

@@ -35,10 +35,12 @@ orderController.buildOrderList = async function (req, res) {
     const nav = await utilities.getNav();
     const accountData = res.locals.accountData;
     const orders = await orderModel.getAllOrders();
+    //const orderStatus = await utilities.getOrderStatus();
     res.render("orders/orders-list", {
         title: "Orders List",
         nav,
         loggedIn: res.locals.loggedIn,
+       // orderStatus,
         accountData,
         orders,
         errors: null,
