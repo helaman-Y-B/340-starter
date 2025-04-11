@@ -478,6 +478,27 @@ legend {
   color: rgb(255, 0, 0);
 }
 
+/* Orders List */
+#orders-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.order {
+  padding: 10px;
+  border: 2px solid;
+  border-radius: 5px;
+  border-color: rgb(0, 162, 255);
+  background-color: rgb(181, 228, 255);
+}
+
+.order p {
+  border-bottom: 2px solid rgb(0, 162, 255);
+}
+
 /* medias */
 
 @media (min-width: 565px) {
@@ -640,9 +661,14 @@ legend {
     margin-top: 10px;
   }
 
-  /* Registration page */
-
-
+  /* Orders List */
+  .order {
+    display: flex;
+    flex-direction: row;
+    max-width: fit-content;
+    margin: 10px;
+    text-align: center;
+  }
 }
 
 @media (min-width: 750px) {

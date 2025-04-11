@@ -7,23 +7,21 @@
             <% if (accountData.account_type === "Admin" || accountData.account_type === "Employee") { %>
                 <div id="orders-list">
                     <% orders.forEach(order => { %>
-
-                        // Process each element here
                         <div class="order">
                             <h2>
-                                Nro: <%= order.order_id %>
+                               Order Nro: <%= order.order_id %>
                             </h2>
                             <p>
-                               From: <%= order.account_id %>
+                               From User Nro: <%= order.account_id %>
                             </p>
                             <p>
-                                <%= order.order_date %>
+                                Order Date: <%= new Date(order.order_date).toLocaleDateString("en-US") %>
                             </p>
                             <p>
-                                <%= order.inv_id %>
+                                Car Identification Nro: <%= order.inv_id %>
                             </p>
                             <p>
-                                <%= order.order_status %>
+                               Order Status: <%= order.order_status %>
                             </p>
                         </div>
                     <% }); %>
