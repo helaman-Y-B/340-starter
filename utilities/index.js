@@ -24,6 +24,19 @@ Util.getNav = async function (req, res, next) {
     return list
 }
 
+/* ************************
+ * Constructs the order status HTML unordered list
+ ************************** 
+Util.getOrderStatus = async function (req, res, next) {
+  let options = ["Pending", "Processing", "Shipped", "Delivered"]
+  let list = "<select name = 'order_status'>"
+  options.forEach(option => {
+    list += "<option value = '" + option + "'>" + option + "</option>"
+  })
+  list += "</select>"
+  return list
+}*/
+
 
 /* **************************************
 * Build the classification view HTML
