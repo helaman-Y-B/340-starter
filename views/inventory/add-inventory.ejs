@@ -22,11 +22,11 @@
                                 <legend>ADD THE PRODUCER</legend>
                                 <!-- The "for" and "name" needs to be the same name as in the database -->
                                 <label for="inv_make">ADD THE BRAND OF THE VEHICLE</label>
-                                <input type="text" name="inv_make" id="inv_make" pattern="^[a-zA-Z0-9]+$">
+                                <input type="text" name="inv_make" id="inv_make" pattern="^[a-zA-Z0-9]+$" required>
                                 <label for="inv_model">ADD THE MODEL OF THE VEHICLE</label>
-                                <input type="text" name="inv_model" id="inv_model" pattern="^[a-zA-Z0-9]+$">
+                                <input type="text" name="inv_model" id="inv_model" pattern="^[a-zA-Z0-9]+$" required>
                                 <label for="inv_year">ADD THE YEAR OF THE VEHICLE</label>
-                                <input type="text" name="inv_year" id="inv_year" pattern="^\d{4}$">
+                                <input type="text" name="inv_year" id="inv_year" pattern="^\d{4}$" required>
                             </fieldset>
                             <fieldset>
                                 <legend>ADD DESCRIPTION AND IMAGE</legend>
